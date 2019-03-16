@@ -5,7 +5,7 @@ from models.item import Item
 
 
 def run_command(db_engine):
-    _populate_items()
+    _populate_items(db_engine)
     response = 'Setup complete.'
     return response
 
@@ -13,5 +13,5 @@ def run_command(db_engine):
 def _populate_items(db_engine):
     session_maker = sessionmaker(bind=db_engine)
     session = session_maker()
-    session.add(Item(name='Stone', description='A small stone.'))
+    session.add(Item(name='Stone', description='A small stone.', forage_drop_chance=90))
     session.commit()

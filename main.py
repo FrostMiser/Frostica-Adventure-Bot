@@ -29,7 +29,7 @@ async def on_message(message):
     elif command == '!spellbook':
         response = spellbook.run_command(message, message_content)
     elif command == '!forage':
-        response = forage.run_command(message, message_content)
+        response = forage.run_command(message, db_engine)
     elif command == '!mine':
         response = mine.run_command(message, message_content)
     elif command == '!chop':
