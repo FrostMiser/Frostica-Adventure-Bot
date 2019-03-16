@@ -1,5 +1,5 @@
 
 
 def run_command(message, message_content):
-    response = 'placeholder'
+    response = 'This oommand is not yet supported.'
     return response
