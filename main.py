@@ -3,7 +3,8 @@ import settings
 
 from sqlalchemy import create_engine
 
-from commands import cast, char, chop, craft, enter, forage, hunt, inv, map, mine, move, recipes, spellbook, use, setup, clear_database
+from commands import cast, char, chop, craft, enter, forage, hunt, inv, map, mine, move, recipes, spellbook, use, setup,\
+    clear_database
 from common.initialize import initialize_player
 from common.base import Base
 
@@ -41,7 +42,7 @@ async def on_message(message):
     elif command == '!recipes':
         response = recipe.run_command(message, message_content)
     elif command == '!use':
-        response = use.run_command(message, message_content)
+        response = use.run_command(db_engine, message, message_content)
     elif command == '!char':
         response = char.run_command(db_engine, message)
     elif command == '!inv':
