@@ -5,7 +5,6 @@ import settings
 import commands
 
 
-
 db_engine = create_engine(settings['database_engine'])
 
 @client.event
