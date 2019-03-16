@@ -1,7 +1,7 @@
 # Frostica
 A role-playing game for discord which takes place on the continent of Frostica. Explore the land, craft, and survive.
 
-## Commands
+## Player Commands
 * !map - Display the map of the area around you.
 * !enter - Attempt to enter the area of the map you are in (dungeons, houses, etc).
 * !move <direction> - move your character in a direction. Options are north, east, south, west.
@@ -21,3 +21,6 @@ A role-playing game for discord which takes place on the continent of Frostica. 
 To survive, you will need to find food and water. Eat food or drink water stored in your inventory with !use <item>. 
 You will also need to stay warm in cold areas.
 
+## Admin Commands
+* !setup - Setup the bot for first time use. This creates the initial database.
+* !clear_database - Clears the database, !setup must be run again after this. Removes all of the bots data.
