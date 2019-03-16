@@ -13,9 +13,11 @@ A role-playing game for discord which takes place on the continent of Frostica. 
 * !hunt - Hunt for wild animals in the area.
 * !craft <item> - Craft an item using items in your inventory.
 * !recipes - Display a list of crafting recipes.
-* !use <item> - Use an item in your inventory. This can be used for things such as eating food, drinking water, and scribing spells.
+* !use <item> - Use an item in your inventory. This can be used for things such as eating food, drinking water, scribing
+ spells, as well as equipping and unequipping items.
 * !char - Shows information about your character.
 * !inv - Displays your inventory.
+
 
 ## Survival
 To survive, you will need to find food and water. Eat food or drink water stored in your inventory with !use <item>. 
