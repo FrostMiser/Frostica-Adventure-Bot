@@ -18,5 +18,6 @@ A role-playing game for discord which takes place on the continent of Frostica. 
 * !inv - Displays your inventory.
 
 ## Survival
-To survive, you will need to find food and water. Eat food or drink water stored in your inventory with !use <item>.
+To survive, you will need to find food and water. Eat food or drink water stored in your inventory with !use <item>. 
+You will also need to stay warm in cold areas.
 
