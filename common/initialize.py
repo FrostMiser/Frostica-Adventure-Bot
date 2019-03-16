@@ -1,5 +1,6 @@
 from sqlalchemy.orm import sessionmaker
 from models.player import Player
+from models.player_inventory import PlayerInventory
 
 
 def initialize_player(db_engine, name, id):

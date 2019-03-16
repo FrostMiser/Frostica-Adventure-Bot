@@ -45,7 +45,7 @@ async def on_message(message):
     elif command == '!char':
         response = char.run_command(db_engine, message)
     elif command == '!inv':
-        response = inv.run_command(message, message_content)
+        response = inv.run_command(db_engine, message)
     elif command == '!setup':
         response = setup.run_command(db_engine)
     elif command == '!clear_database':
