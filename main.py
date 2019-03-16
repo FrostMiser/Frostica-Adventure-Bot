@@ -31,7 +31,7 @@ async def on_message(message):
     elif command == '!forage':
         response = forage.run_command(message, db_engine)
     elif command == '!mine':
-        response = mine.run_command(message, message_content)
+        response = mine.run_command(message, db_engine)
     elif command == '!chop':
         response = chop.run_command(message, message_content)
     elif command == '!hunt':
