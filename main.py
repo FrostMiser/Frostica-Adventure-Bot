@@ -3,8 +3,7 @@ import settings
 
 from sqlalchemy import create_engine
 
-from commands import cast, char, chop, craft, enter, forage, hunt, inv, map, mine, move, recipes, spellbook, use, setup,\
-    clear_database
+from commands import cast, char, chop, craft, enter, forage, hunt, inv, map, mine, move, recipes, spellbook, use, setup
 from common.initialize import initialize_player
 from common.base import Base
 
@@ -52,8 +51,6 @@ async def on_message(message):
         response = inv.run_command(db_engine, message)
     elif command == '!setup':
         response = setup.run_command(db_engine)
-    elif command == '!clear_database':
-        response = clear_database.run_command(db_engine)
     else:
         response = "Unknown command."
 
