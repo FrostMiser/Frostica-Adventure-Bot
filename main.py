@@ -43,6 +43,9 @@ async def on_message(message):
         response = char.run_command(message, message_content)
     elif command == '!inv':
         response = inv.run_command(message, message_content)
+    elif command == '!setup':
+        response = setup.run_command(message, message_content)
+
     else:
         response = 'Unknown command.'
 
