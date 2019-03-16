@@ -1,6 +1,6 @@
 from common.base import Base
 
-from sqlalchemy import Column, Integer, String
+from sqlalchemy import Column, Integer, String, Boolean
 
 
 class Item(Base):
@@ -12,3 +12,5 @@ class Item(Base):
     forage_drop_chance = Column(Integer, default=0)
     mine_drop_chance = Column(Integer, default=0)
     hunt_drop_chance = Column(Integer, default=0)
+    edible = Column(Boolean, default=False)
+    hunger_satisfaction = Column(Integer, default=0)
