@@ -3,7 +3,7 @@ from sqlalchemy import create_engine
 import settings
 
 
-from commands import cast, char, chop, craft, enter, forage, hunt, inv, map, move, recipes, spellbook, use, setup
+from commands import cast, char, chop, craft, enter, forage, hunt, inv, map, mine, move, recipes, spellbook, use, setup
 
 
 db_engine = create_engine(settings.settings['database_engine'])
