@@ -2,11 +2,11 @@ from sqlalchemy.orm import sessionmaker
 from models.player import Player
 
 
-def initialize_player(db_engine, name):
+def initialize_player(db_engine, name, id):
     session_maker = sessionmaker(bind=db_engine)
     session = session_maker()
-    player = session.query(Player).filter(Player.name == name).first()
+    player = session.query(Player).filter(Player.id == id).first()
     if not player:
-        new_player = Player(name=name)
+        new_player = Player(id=id, name=name)
         session.add(new_player)
         session.commit()

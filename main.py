@@ -16,7 +16,7 @@ async def on_message(message):
     message_content = message.content.lower()
     command =  message_content.split(" ")[0] if message_content.split(" ") else None
     if not command or message.author == client.user: return
-    initialize_player(db_engine, message.author.name)
+    initialize_player(db_engine, message.author.name, message.author.id)
 
     if command == '!map':
         response = map.run_command(message, message_content)
