@@ -44,8 +44,7 @@ async def on_message(message):
     elif command == '!inv':
         response = inv.run_command(message, message_content)
     elif command == '!setup':
-        response = setup.run_command(message, message_content)
-
+        response = setup.run_command(db_engine)
     else:
         response = 'Unknown command.'
 
