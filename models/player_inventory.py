@@ -13,5 +13,5 @@ class PlayerInventory(Base):
     player_id = Column(Integer, ForeignKey(Player.id))
     item_id = Column(Integer, ForeignKey(Item.id))
     item_amount = Column(Integer)
-    UniqueConstraint('player_id', 'item_name')
+    UniqueConstraint(player_id, item_id)
     item = relationship('models.item.Item')

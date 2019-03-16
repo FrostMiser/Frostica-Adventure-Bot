@@ -17,7 +17,12 @@ def run_command(message, db_engine):
     foraged_item_id = random.choices(list(possible_items.keys()), possible_items.values())[0]
     foraged_item = session.query(Item).filter(Item.id == foraged_item_id).first()
 
-    player.inventory.append(PlayerInventory(item_id=foraged_item.id, item_amount=1))
+    player_inventory = session.query(PlayerInventory).filter(PlayerInventory.item_id == foraged_item.id).first()
+
+    if player_inventory:
+        player_inventory.item_amount += 1
+    else:
+        player.inventory.append(PlayerInventory(player_id=player.id, item_id=foraged_item.id, item_amount=1))
     session.commit()
     response = '{} went foraging and found a {}'.format(player.name, foraged_item.name)
     return response
