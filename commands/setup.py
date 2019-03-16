@@ -13,6 +13,7 @@ def run_command(db_engine):
 def _populate_items(db_engine):
     session_maker = sessionmaker(bind=db_engine)
     session = session_maker()
+    session.query(Item).delete()
     session.add(Item(name='stone', forage_drop_chance=90, mine_drop_chance=120))
     session.add(Item(name='iron ore', mine_drop_chance=15))
     session.add(Item(name='gold ore', mine_drop_chance=5))
@@ -28,7 +29,7 @@ def _populate_items(db_engine):
     session.add(Item(name='leaf', forage_drop_chance=20))
     session.add(Item(name='pine needle', forage_drop_chance=20))
     session.add(Item(name='brown mushroom', forage_drop_chance=5))
-    session.add(Item(name='cucumber', forage_drop_chance=5, edible=True, hunger_satisfaction=5))
+    session.add(Item(name='cucumber', forage_drop_chance=115, edible=True, hunger_satisfaction=5))
     session.add(Item(name='blueberry', forage_drop_chance=2, edible=True, hunger_satisfaction=2))
     session.add(Item(name='cherry', forage_drop_chance=2, edible=True, hunger_satisfaction=2))
     session.commit()

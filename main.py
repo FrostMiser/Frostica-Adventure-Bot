@@ -19,6 +19,9 @@ async def on_message(message):
     if not command or message.author == client.user: return
     initialize_player(db_engine, message.author.name, message.author.id)
 
+    if not command.startswith('!'):
+        return
+
     if command == '!map':
         response = map.run_command(message, message_content)
     elif command == '!enter':
@@ -40,7 +43,7 @@ async def on_message(message):
     elif command == '!craft':
         response = craft.run_command(message, message_content)
     elif command == '!recipes':
-        response = recipe.run_command(message, message_content)
+        response = recipes.run_command(message, message_content)
     elif command == '!use':
         response = use.run_command(db_engine, message, message_content)
     elif command == '!char':
@@ -52,7 +55,7 @@ async def on_message(message):
     elif command == '!clear_database':
         response = clear_database.run_command(db_engine)
     else:
-        response = 'Unknown command.'
+        response = "Unknown command."
 
     if response:
         await client.send_message(message.channel, response)

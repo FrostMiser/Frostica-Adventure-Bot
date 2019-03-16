@@ -9,5 +9,7 @@ def run_command(db_engine, message):
     response = '__{}__'.format(player.name)
     response += '\nHealth {}/{}'.format(player.health, player.max_health)
     response += '\nMana {}/{}'.format(player.mana, player.max_mana)
+    response += '\nHunger {}/{}'.format(player.hunger, player.max_hunger)
+    response += '\nThirst {}/{}'.format(player.thirst, player.max_thirst)
 
     return response
