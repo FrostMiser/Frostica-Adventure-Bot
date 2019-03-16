@@ -11,5 +11,6 @@ def run_command(db_engine, message):
     response += '\nMana {}/{}'.format(player.mana, player.max_mana)
     response += '\nHunger {}/{}'.format(player.hunger, player.max_hunger)
     response += '\nThirst {}/{}'.format(player.thirst, player.max_thirst)
+    # ToDo Display equipment being worn
 
     return response
