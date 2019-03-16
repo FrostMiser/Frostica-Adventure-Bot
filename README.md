@@ -24,4 +24,3 @@ You will also need to stay warm in cold areas.
 
 ## Admin Commands
 * !setup - Setup the bot for first time use. This creates the initial database.
-* !clear_database - Clears the database, !setup must be run again after this. Removes all of the bots data.
