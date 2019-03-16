@@ -1,5 +1,7 @@
-from sqlalchemy import Column, Integer, String
+from common.base import Base
 from models.player import Player
+
+from sqlalchemy import Column, Integer, String
 
 
 class PlayerInventory(Base):

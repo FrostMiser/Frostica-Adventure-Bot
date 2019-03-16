@@ -1,13 +1,13 @@
 import discord
-from sqlalchemy import create_engine
 import settings
 
+from sqlalchemy import create_engine
 
 from commands import cast, char, chop, craft, enter, forage, hunt, inv, map, mine, move, recipes, spellbook, use, setup
 
-
 db_engine = create_engine(settings.settings['database_engine'])
 client = discord.Client()
+
 
 @client.event
 async def on_message(message):
