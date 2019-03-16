@@ -1,4 +1,6 @@
 import discord
+import sqlite3
+
 
 @client.event
 async def on_message(message):
