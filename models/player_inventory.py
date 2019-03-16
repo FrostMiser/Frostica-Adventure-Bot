@@ -9,4 +9,3 @@ class PlayerInventory(Base):
     player_id = Column (Integer, ForeignKey(Player.id))
     item_name = Column(String)
     item_amount = Column(Integer)
-
