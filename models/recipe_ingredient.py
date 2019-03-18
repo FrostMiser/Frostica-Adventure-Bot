@@ -12,4 +12,5 @@ class RecipeIngredient(Base):
     id = Column(Integer, primary_key=True)
     recipe_id = Column(Integer, ForeignKey(Recipe.id))
     item_id = Column(Integer, ForeignKey(Item.id))
+    item_amount = Column(Integer)
     item = relationship('models.item.Item')

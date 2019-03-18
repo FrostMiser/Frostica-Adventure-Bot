@@ -71,9 +71,9 @@ def _populate_recipes(db_engine):
     stone_item = session.query(Item).filter(Item.name == 'stone').first()
     stick_item = session.query(Item).filter(Item.name == 'stick').first()
 
-    basic_pickaxe_ingredient_1 = RecipeIngredient(recipe_id=basic_pickaxe.id, item=stone_item)
+    basic_pickaxe_ingredient_1 = RecipeIngredient(recipe_id=basic_pickaxe.id, item=stone_item, item_amount=7)
     session.add(basic_pickaxe_ingredient_1)
-    basic_pickaxe_ingredient_2 = RecipeIngredient(recipe_id=basic_pickaxe.id, item=stick_item)
+    basic_pickaxe_ingredient_2 = RecipeIngredient(recipe_id=basic_pickaxe.id, item=stick_item, item_amount=4)
     session.add(basic_pickaxe_ingredient_2)
 
     session.commit()
