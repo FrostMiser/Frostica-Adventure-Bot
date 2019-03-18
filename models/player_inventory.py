@@ -5,7 +5,7 @@ from models.item import Item
 from sqlalchemy import Column, Integer, String, UniqueConstraint, ForeignKey
 from sqlalchemy.orm import relationship
 
-
+# ToDo Consider renaming this, should this be something like PlayerInventoryItem?
 class PlayerInventory(Base):
     __tablename__ = 'player_inventory'
 
