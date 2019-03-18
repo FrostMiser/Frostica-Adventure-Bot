@@ -9,7 +9,7 @@ from common.database import db_engine
 
 
 def run_command(message, message_content):
-    item_name = ''.join(message_content.split(" ")[1:]) if len(message_content.split(" ")) > 1 else None
+    item_name = ' '.join(message_content.split(" ")[1:]) if len(message_content.split(" ")) > 1 else None
     if item_name:
         session_maker = sessionmaker(bind=db_engine)
         session = session_maker()
