@@ -34,3 +34,4 @@ You will also need to stay warm in cold areas.
 * Ride horses and dragons.
 * Craft spells to add to the spellbook.
 * Upgrade max mana, health, hunger, thirst (without adding levels).
+* Require tools for mining and chopping trees, which can be upgraded and wear out when used.
