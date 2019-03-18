@@ -29,9 +29,11 @@ You will also need to stay warm in cold areas.
 
 
 ## Ideas for future version
-* Claim land and build on it.
+* Claim land and build on it. Build a house and be able to enter it and put thing inside of it.
 * Tame animals.
 * Ride horses and dragons.
 * Craft spells to add to the spellbook.
 * Upgrade max mana, health, hunger, thirst (without adding levels).
 * Require tools for mining and chopping trees, which can be upgraded and wear out when used.
+* Underground map
+* Temperatures, time of day, seasons
