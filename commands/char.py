@@ -1,8 +1,8 @@
 from sqlalchemy.orm import sessionmaker
 from models.player import Player
+from common.database import db_engine
 
-
-def run_command(db_engine, message):
+def run_command(message):
     session_maker = sessionmaker(bind=db_engine)
     session = session_maker()
     player = session.query(Player).filter(Player.id == message.author.id).first()

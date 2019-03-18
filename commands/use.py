@@ -5,9 +5,10 @@ from sqlalchemy.orm import sessionmaker
 from models.player import Player
 from models.item import Item
 from models.player_inventory import PlayerInventory
+from common.database import db_engine
 
 
-def run_command(db_engine, message, message_content):
+def run_command(message, message_content):
     item_name = ''.join(message_content.split(" ")[1:]) if len(message_content.split(" ")) > 1 else None
     if item_name:
         session_maker = sessionmaker(bind=db_engine)

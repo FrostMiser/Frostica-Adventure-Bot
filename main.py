@@ -1,13 +1,11 @@
 import discord
 import settings
 
-from sqlalchemy import create_engine
-
 from commands import cast, char, chop, craft, enter, forage, hunt, inv, map, mine, move, recipes, spellbook, use, setup
 from common.initialize import initialize_player
 from common.base import Base
+from common.database import db_engine
 
-db_engine = create_engine(settings.settings['database_engine'])
 client = discord.Client()
 Base.metadata.create_all(db_engine)
 
@@ -16,7 +14,7 @@ async def on_message(message):
     message_content = message.content.lower()
     command =  message_content.split(" ")[0] if message_content.split(" ") else None
     if not command or message.author == client.user: return
-    initialize_player(db_engine, message.author.name, message.author.id)
+    initialize_player(message.author.name, message.author.id)
 
     if not command.startswith('!'):
         return
@@ -32,9 +30,9 @@ async def on_message(message):
     elif command == '!spellbook':
         response = spellbook.run_command(message, message_content)
     elif command == '!forage':
-        response = forage.run_command(message, db_engine)
+        response = forage.run_command(message)
     elif command == '!mine':
-        response = mine.run_command(message, db_engine)
+        response = mine.run_command(message)
     elif command == '!chop':
         response = chop.run_command(message, message_content)
     elif command == '!hunt':
@@ -44,13 +42,13 @@ async def on_message(message):
     elif command == '!recipes':
         response = recipes.run_command(message, message_content)
     elif command == '!use':
-        response = use.run_command(db_engine, message, message_content)
+        response = use.run_command(message, message_content)
     elif command == '!char':
-        response = char.run_command(db_engine, message)
+        response = char.run_command(message)
     elif command == '!inv':
-        response = inv.run_command(db_engine, message)
+        response = inv.run_command(message)
     elif command == '!setup':
-        response = setup.run_command(db_engine)
+        response = setup.run_command()
     else:
         response = "Unknown command."
 
