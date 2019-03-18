@@ -37,3 +37,4 @@ You will also need to stay warm in cold areas.
 * Require tools for mining and chopping trees, which can be upgraded and wear out when used.
 * Underground map
 * Temperatures, time of day, seasons
+* Set a maximum inventory size and add ways to upgrade the size (bags, increase base size).
