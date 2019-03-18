@@ -9,6 +9,7 @@ from models.recipe_ingredient import RecipeIngredient
 # ToDo Add permission checking for this command
 def run_command(db_engine):
     _populate_items(db_engine)
+    _populate_recipes(db_engine)
     response = 'Setup complete.'
     return response
 
@@ -63,12 +64,17 @@ def _populate_recipes(db_engine):
     session.query(Recipe).delete()
     session.query(RecipeIngredient).delete()
 
+    # Basic Pickaxe
     basic_pickaxe = Recipe(id=1, name='Basic Pickaxe')
     session.add(basic_pickaxe)
     session.query(Recipe).delete()
-    stone_item = session.query(Item).filter(Item.name == 'stone')
+    stone_item = session.query(Item).filter(Item.name == 'stone').first()
+    stick_item = session.query(Item).filter(Item.name == 'stick').first()
 
-    basic_pickaxe_ingredient_1 = RecipeIngredient(recipe_id=1, item=stone_item)
+    basic_pickaxe_ingredient_1 = RecipeIngredient(recipe_id=basic_pickaxe.id, item=stone_item)
+    session.add(basic_pickaxe_ingredient_1)
+    basic_pickaxe_ingredient_2 = RecipeIngredient(recipe_id=basic_pickaxe.id, item=stick_item)
+    session.add(basic_pickaxe_ingredient_2)
 
     session.commit()
     return
