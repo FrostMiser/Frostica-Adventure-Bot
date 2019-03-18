@@ -25,7 +25,7 @@ To survive, you will need to find food and water. Eat food or drink water stored
 You will also need to stay warm in cold areas.
 
 ## Admin Commands
-* !setup - Setup the bot for first time use. This creates the initial database.
+* !setup - Setup the bot for first time use. This populates the database with items and recipes.
 
 
 ## Ideas for future version
@@ -38,3 +38,4 @@ You will also need to stay warm in cold areas.
 * Underground map
 * Temperatures, time of day, seasons
 * Set a maximum inventory size and add ways to upgrade the size (bags, increase base size).
+* Quests
