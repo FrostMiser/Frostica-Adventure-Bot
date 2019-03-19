@@ -1,26 +1,32 @@
+"""This is the main module which runs this application"""
+from commands import cast, char, chop, craft, enter, forage, hunt, inv, map as area_map, mine, move, recipes, spellbook,\
+    use, setup
 import discord
-import settings
 
-from commands import cast, char, chop, craft, enter, forage, hunt, inv, map, mine, move, recipes, spellbook, use, setup
+import settings
 from common.initialize import initialize_player
 from common.base import Base
 from common.database import db_engine
 
+
 client = discord.Client()
 Base.metadata.create_all(db_engine)
 
+
 @client.event
 async def on_message(message):
+    """Main chat message event"""
     message_content = message.content.lower()
-    command =  message_content.split(" ")[0] if message_content.split(" ") else None
-    if not command or message.author == client.user: return
+    command = message_content.split(" ")[0] if message_content.split(" ") else None
+    if not command or message.author == client.user:
+        return
     initialize_player(message.author.name, message.author.id)
 
     if not command.startswith('!'):
         return
 
     if command == '!map':
-        response = map.run_command(message, message_content)
+        response = area_map.run_command(message, message_content)
     elif command == '!enter':
         response = enter.run_command(message, message_content)
     elif command == '!move':
@@ -56,9 +62,3 @@ async def on_message(message):
         await client.send_message(message.channel, response)
 
 client.run(settings.settings['api_token'])
-
-
-
-
-
-

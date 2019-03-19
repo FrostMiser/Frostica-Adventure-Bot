@@ -1,4 +1,4 @@
-# Rename this file to settings.py and update the values as needed.
+"""Stores settings such as the database path. Rename this file to settings.py and update the values as needed."""
 
 
 settings = {
