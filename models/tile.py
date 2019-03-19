@@ -9,4 +9,5 @@ class Tile(Base):
     name = Column(String)
     display_emoji = Column(String)
     emoji_name = Column(String)
-    interactive = Column(Boolean)
+    interactive = Column(Boolean, default=False)
+    traversable = Column(Boolean, default=True)

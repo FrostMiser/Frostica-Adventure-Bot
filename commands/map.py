@@ -29,5 +29,5 @@ def run_command(message, message_content):
     current_tile = get_tile(current_tile_id, session)
 
     result = _emojify_area(local_area, player, session)
-    result += f"\nyou are at x: {player.x}, y: {player.y} ({current_tile.name})"
+    result += f"`> you are at x: {player.x}, y: {player.y} ({current_tile.name})`"
     return result

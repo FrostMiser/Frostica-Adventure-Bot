@@ -1,4 +1,3 @@
-from sqlalchemy.orm import sessionmaker
 from models.player import Player
 from models.tile import Tile
 from common.database import db_engine
@@ -43,6 +42,10 @@ def get_tile_id(x, y):
 
 def get_tile(id, session):
   return session.query(Tile).get(id)
+
+def get_tile_from(x, y, session):
+  tile_id = get_tile_id(x, y)
+  return get_tile(tile_id, session)
 
 def get_local_area(pos_x, pos_y, limit = 5):
   negative_offset_x = pos_x - limit
