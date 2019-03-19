@@ -8,6 +8,8 @@ A role-playing game for discord which takes place on the continent of Frostica. 
 * !forage - Forage in the area for materials.
 * !char - Shows information about your character.
 * !inv - Displays your inventory.
+* !craft <item> - Craft an item using items in your inventory.
+* !recipes - Display a list of crafting recipes.
 
 ## Player Commands (not complete)
 * !map - Display the map of the area around you.
@@ -17,8 +19,7 @@ A role-playing game for discord which takes place on the continent of Frostica. 
 * !spellbook - Lists the spells in your spellbook.
 * !chop - Chop trees in the area.
 * !hunt - Hunt for wild animals in the area.
-* !craft <item> - Craft an item using items in your inventory.
-* !recipes - Display a list of crafting recipes.
+
 
 ## Survival
 To survive, you will need to find food and water. Eat food or drink water stored in your inventory with !use <item>. 
