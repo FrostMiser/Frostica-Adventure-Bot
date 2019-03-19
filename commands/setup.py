@@ -19,6 +19,8 @@ def _populate_items(db_engine):
     session_maker = sessionmaker(bind=db_engine)
     session = session_maker()
     session.query(Item).delete()
+
+    # 1 - 200 mined items
     session.add(Item(id=1, name='stone', forage_drop_chance=90, mine_drop_chance=120))
     session.add(Item(id=2, name='iron ore', mine_drop_chance=15))
     session.add(Item(id=3, name='gold ore', mine_drop_chance=5))
@@ -45,19 +47,28 @@ def _populate_items(db_engine):
     session.add(Item(id=23, name='unrefined peridot', mine_drop_chance=2))
     session.add(Item(id=24, name='unrefined onyx', mine_drop_chance=2))
 
-    session.add(Item(id=25, name='stick', forage_drop_chance=120))
-    session.add(Item(id=26, name='leaf', forage_drop_chance=20))
-    session.add(Item(id=27, name='pine needle', forage_drop_chance=20))
-    session.add(Item(id=28, name='brown mushroom', forage_drop_chance=5))
-    session.add(Item(id=29, name='cucumber', forage_drop_chance=10, edible=True, hunger_satisfaction=5))
-    session.add(Item(id=30, name='blueberry', forage_drop_chance=10, edible=True, hunger_satisfaction=1))
-    session.add(Item(id=31, name='cherry', forage_drop_chance=10, edible=True, hunger_satisfaction=1))
-    session.add(Item(id=32, name='banana', forage_drop_chance=10, edible=True, hunger_satisfaction=2))
-    session.add(Item(id=33, name='orange', forage_drop_chance=10, edible=True, hunger_satisfaction=2))
-    session.add(Item(id=34, name='pear', forage_drop_chance=10, edible=True, hunger_satisfaction=2))
-    session.add(Item(id=35, name='carrot', forage_drop_chance=10, edible=True, hunger_satisfaction=2))
+    # 201 - 400 foraged items
+    session.add(Item(id=201, name='stick', forage_drop_chance=120))
+    session.add(Item(id=202, name='leaf', forage_drop_chance=20))
+    session.add(Item(id=203, name='pine needle', forage_drop_chance=20))
+    session.add(Item(id=204, name='brown mushroom', forage_drop_chance=5))
+    session.add(Item(id=205, name='cucumber', forage_drop_chance=10, edible=True, hunger_satisfaction=5))
+    session.add(Item(id=206, name='blueberry', forage_drop_chance=10, edible=True, hunger_satisfaction=1))
+    session.add(Item(id=207, name='cherry', forage_drop_chance=10, edible=True, hunger_satisfaction=1))
+    session.add(Item(id=208, name='banana', forage_drop_chance=10, edible=True, hunger_satisfaction=2))
+    session.add(Item(id=209, name='orange', forage_drop_chance=10, edible=True, hunger_satisfaction=2))
+    session.add(Item(id=210, name='pear', forage_drop_chance=10, edible=True, hunger_satisfaction=2))
+    session.add(Item(id=211, name='carrot', forage_drop_chance=10, edible=True, hunger_satisfaction=2))
+    session.add(Item(id=212, name='broccoli', forage_drop_chance=5, edible=True, hunger_satisfaction=7))
+    session.add(Item(id=213, name='spinach', forage_drop_chance=2, edible=True, hunger_satisfaction=1))
+    session.add(Item(id=214, name='cauliflower', forage_drop_chance=1, edible=True, hunger_satisfaction=9))
+    session.add(Item(id=215, name='radish', forage_drop_chance=1, edible=True, hunger_satisfaction=9))
+    # 401 - 600 hunting items
+    # 601 - 800 wood chopping items
 
-    session.add(Item(id=36, name='basic pickaxe'))
+    # 801 - 1200 crafted items, tools, armor, etc
+    session.add(Item(id=401, name='basic pickaxe'))
+    session.add(Item(id=402, name='basic axe'))
     session.commit()
 
 
@@ -72,6 +83,15 @@ def _populate_recipes(db_engine):
     session.add(basic_pickaxe)
 
     basic_pickaxe_ingredient_1 = RecipeIngredient(recipe_id=basic_pickaxe.id, item=get_item('stone'), item_amount=7)
+    session.add(basic_pickaxe_ingredient_1)
+    basic_pickaxe_ingredient_2 = RecipeIngredient(recipe_id=basic_pickaxe.id, item=get_item('stick'), item_amount=4)
+    session.add(basic_pickaxe_ingredient_2)
+
+    # Basic axe
+    basic_pickaxe = Recipe(id=1, name='basic axe', item=get_item('basic axe'))
+    session.add(basic_pickaxe)
+
+    basic_pickaxe_ingredient_1 = RecipeIngredient(recipe_id=basic_pickaxe.id, item=get_item('stone'), item_amount=5)
     session.add(basic_pickaxe_ingredient_1)
     basic_pickaxe_ingredient_2 = RecipeIngredient(recipe_id=basic_pickaxe.id, item=get_item('stick'), item_amount=4)
     session.add(basic_pickaxe_ingredient_2)
