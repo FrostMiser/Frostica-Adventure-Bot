@@ -25,5 +25,5 @@ def run_command(message):
     else:
         player.inventory.append(PlayerInventory(player_id=player.id, item_id=chopped_item.id, item_amount=1))
     session.commit()
-    response = '{} chopped a tree and found a {}'.format(player.name, chopped_item.name)
+    response = ':evergreen_tree: {} chopped a tree and found a {}'.format(player.name, chopped_item.name)
     return response

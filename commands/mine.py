@@ -25,5 +25,5 @@ def run_command(message):
     else:
         player.inventory.append(PlayerInventory(player_id=player.id, item_id=mined_item.id, item_amount=1))
     session.commit()
-    response = '{} went foraging and found a {}'.format(player.name, mined_item.name)
+    response = ':pick: {} went mining and found a {}'.format(player.name, mined_item.name)
     return response

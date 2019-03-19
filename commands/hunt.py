@@ -25,5 +25,5 @@ def run_command(message):
     else:
         player.inventory.append(PlayerInventory(player_id=player.id, item_id=hunted_item.id, item_amount=1))
     session.commit()
-    response = '{} went hunting and found a {}'.format(player.name, hunted_item.name)
+    response = ':dagger: {} went hunting and found a {}'.format(player.name, hunted_item.name)
     return response
