@@ -16,7 +16,7 @@ def run_command(message):
     possible_items = {item.id: item.hunt_drop_chance for item in item_lookup_results}
 
     hunted_item_id = random.choices(list(possible_items.keys()), possible_items.values())[0]
-    hunted_item = session.query(Item).filter(Item.id == hunted_item_id ).first()
+    hunted_item = session.query(Item).filter(Item.id == hunted_item_id).first()
 
     player_inventory = session.query(PlayerInventory).filter(PlayerInventory.item_id == hunted_item.id).first()
 
