@@ -31,7 +31,7 @@ async def on_message(message):
     elif command == '!enter':
         response = enter.run_command(message, message_content)
     elif command == '!move':
-        response = move.run_command(message, message_content)
+        response = move.run_command(db_engine, message, message_content)
     elif command == '!cast':
         response = cast.run_command(message, message_content)
     elif command == '!spellbook':
