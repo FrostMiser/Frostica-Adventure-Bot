@@ -64,12 +64,14 @@ def _populate_items(db_engine):
     session.add(Item(id=214, name='cauliflower', forage_drop_chance=1, edible=True, hunger_satisfaction=9))
     session.add(Item(id=215, name='radish', forage_drop_chance=1, edible=True, hunger_satisfaction=9))
     # 401 - 600 hunting items
+    session.add(Item(id=401, name='rat', hunt_drop_chance=1))
+
     # 601 - 800 wood chopping items
     session.add(Item(id=601, name='wood', chop_drop_chance=1))
 
     # 801 - 1200 crafted items, tools, armor, etc
-    session.add(Item(id=401, name='basic pickaxe'))
-    session.add(Item(id=402, name='basic axe'))
+    session.add(Item(id=801, name='basic pickaxe'))
+    session.add(Item(id=802, name='basic axe'))
     session.commit()
 
 
