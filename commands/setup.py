@@ -63,6 +63,7 @@ def _populate_items():
     session.add(Item(id=213, name='spinach', forage_drop_chance=2, edible=True, hunger_satisfaction=1))
     session.add(Item(id=214, name='cauliflower', forage_drop_chance=1, edible=True, hunger_satisfaction=9))
     session.add(Item(id=215, name='radish', forage_drop_chance=1, edible=True, hunger_satisfaction=9))
+    session.add(Item(id=216, name='lemon', forage_drop_chance=1, edible=True, hunger_satisfaction=2))
     # 401 - 600 hunting items
     session.add(Item(id=401, name='rat', hunt_drop_chance=100, chop_drop_chance=1))
     session.add(Item(id=402, name='chicken', hunt_drop_chance=5))
