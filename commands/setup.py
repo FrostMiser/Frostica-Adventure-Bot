@@ -3,7 +3,7 @@ from sqlalchemy.orm import sessionmaker
 from common.base import Base
 from common.helpers import get_item
 from models.item import Item
-from models.block import Block
+from models.tile import Tile
 from models.recipe import Recipe
 from models.recipe_ingredient import RecipeIngredient
 from common.database import db_engine
@@ -11,7 +11,7 @@ from common.database import db_engine
 # ToDo Add permission checking for this command
 def run_command():
     _populate_items(db_engine)
-    _populate_blocks(db_engine)
+    _populate_tiles(db_engine)
     _populate_recipes(db_engine)
     response = 'Setup complete.'
     return response
@@ -22,7 +22,6 @@ def _populate_items(db_engine):
     session = session_maker()
     session.query(Item).delete()
 
-    # ITEMS
     # 1 - 200 mined items
     session.add(Item(id=1, name='stone', forage_drop_chance=90, mine_drop_chance=120))
     session.add(Item(id=2, name='iron ore', mine_drop_chance=15))
@@ -75,16 +74,18 @@ def _populate_items(db_engine):
     session.commit()
 
 
-def _populate_blocks(db_engine):
+def _populate_tiles(db_engine):
     session_maker = sessionmaker(bind=db_engine)
     session = session_maker()
 
-    # BLOCKS
-    # 0 - 3 testing
-    session.add(Block(id=0, name='mountains', emoji_name='mount_fuji', display_emoji='🗻', interactive=False))
-    session.add(Block(id=1, name='flat snow', emoji_name='white_large_square', display_emoji='⬜', interactive=False))
-    session.add(Block(id=2, name='water', emoji_name='large_blue_diamond', display_emoji='🔷', interactive=False))
-    session.add(Block(id=3, name='trees', emoji_name='evergreen_tree', display_emoji='🌲', interactive=True))
+    # shouldn't exist normally
+    session.add(Tile(id=-1, name='barrier', emoji_name='no_entry_sign', display_emoji='🚫', interactive=False))
+    
+    # exists
+    session.add(Tile(id=0, name='mountains', emoji_name='mount_fuji', display_emoji='🗻', interactive=False))
+    session.add(Tile(id=1, name='flat snow', emoji_name='white_large_square', display_emoji='⬜', interactive=False))
+    session.add(Tile(id=2, name='water', emoji_name='large_blue_diamond', display_emoji='🔷', interactive=False))
+    session.add(Tile(id=3, name='trees', emoji_name='evergreen_tree', display_emoji='🌲', interactive=True))
     session.commit()
 
 

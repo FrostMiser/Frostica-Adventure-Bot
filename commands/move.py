@@ -1,7 +1,8 @@
 from sqlalchemy.orm import sessionmaker
 from models.player import Player 
+from common.database import db_engine
 
-def run_command(db_engine, message, message_content): 
+def run_command(message, message_content): 
   session_maker = sessionmaker(bind=db_engine) 
   session = session_maker() 
   player = session.query(Player).filter(Player.id == message.author.id).first() 
@@ -10,10 +11,10 @@ def run_command(db_engine, message, message_content):
   response = ""
   
   if direction == 'north': 
-    player.y += 1
+    player.y -= 1
     response += "you move north.\n"
   elif direction == 'south': 
-    player.y -= 1
+    player.y += 1
     response += "you move south.\n"
   elif direction == 'east': 
     player.x += 1
