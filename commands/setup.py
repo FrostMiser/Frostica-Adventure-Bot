@@ -65,6 +65,7 @@ def _populate_items(db_engine):
     session.add(Item(id=215, name='radish', forage_drop_chance=1, edible=True, hunger_satisfaction=9))
     # 401 - 600 hunting items
     # 601 - 800 wood chopping items
+    session.add(Item(id=601, name='wood', chop_drop_chance=1))
 
     # 801 - 1200 crafted items, tools, armor, etc
     session.add(Item(id=401, name='basic pickaxe'))
@@ -97,5 +98,5 @@ def _populate_recipes(db_engine):
     basic_axe_ingredient_2 = RecipeIngredient(recipe_id=basic_axe.id, item=get_item('stick'), item_amount=4)
     session.add(basic_axe_ingredient_2)
     session.commit()
-    
+
     return

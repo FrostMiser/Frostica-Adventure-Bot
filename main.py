@@ -40,7 +40,7 @@ async def on_message(message):
     elif command == '!mine':
         response = mine.run_command(message)
     elif command == '!chop':
-        response = chop.run_command(message, message_content)
+        response = chop.run_command(message)
     elif command == '!hunt':
         response = hunt.run_command(message, message_content)
     elif command == '!craft':
