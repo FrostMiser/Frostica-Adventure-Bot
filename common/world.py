@@ -2,6 +2,12 @@ from models.player import Player
 from models.tile import Tile
 from common.database import db_engine
 
+# TILE REFERENCE
+# 0 = mountains
+# 1 = flat snow
+# 2 = water
+# 3 = trees
+
 world = {
   'x':0,
   'y':0,
