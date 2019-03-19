@@ -45,7 +45,7 @@ def _populate_items(db_engine):
     session.add(Item(id=23, name='unrefined peridot', mine_drop_chance=2))
     session.add(Item(id=24, name='unrefined onyx', mine_drop_chance=2))
 
-    session.add(Item(id=25, name='stick', forage_drop_chance=90))
+    session.add(Item(id=25, name='stick', forage_drop_chance=120))
     session.add(Item(id=26, name='leaf', forage_drop_chance=20))
     session.add(Item(id=27, name='pine needle', forage_drop_chance=20))
     session.add(Item(id=28, name='brown mushroom', forage_drop_chance=5))
@@ -56,6 +56,8 @@ def _populate_items(db_engine):
     session.add(Item(id=33, name='orange', forage_drop_chance=10, edible=True, hunger_satisfaction=2))
     session.add(Item(id=34, name='pear', forage_drop_chance=10, edible=True, hunger_satisfaction=2))
     session.add(Item(id=35, name='carrot', forage_drop_chance=10, edible=True, hunger_satisfaction=2))
+
+    session.add(Item(id=36, name='basic pickaxe'))
     session.commit()
 
 
@@ -66,7 +68,7 @@ def _populate_recipes(db_engine):
     session.query(RecipeIngredient).delete()
 
     # Basic Pickaxe
-    basic_pickaxe = Recipe(id=1, name='basic pickaxe')
+    basic_pickaxe = Recipe(id=1, name='basic pickaxe', item=get_item('basic pickaxe'))
     session.add(basic_pickaxe)
 
     basic_pickaxe_ingredient_1 = RecipeIngredient(recipe_id=basic_pickaxe.id, item=get_item('stone'), item_amount=7)
