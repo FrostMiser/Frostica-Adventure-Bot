@@ -86,15 +86,16 @@ def _populate_recipes(db_engine):
     session.add(basic_pickaxe_ingredient_1)
     basic_pickaxe_ingredient_2 = RecipeIngredient(recipe_id=basic_pickaxe.id, item=get_item('stick'), item_amount=4)
     session.add(basic_pickaxe_ingredient_2)
+    session.commit()
 
     # Basic axe
-    basic_axe = Recipe(id=1, name='basic axe', item=get_item('basic axe'))
+    basic_axe = Recipe(id=2, name='basic axe', item=get_item('basic axe'))
     session.add(basic_axe)
 
     basic_axe_ingredient_1 = RecipeIngredient(recipe_id=basic_axe.id, item=get_item('stone'), item_amount=5)
     session.add(basic_axe_ingredient_1)
     basic_axe_ingredient_2 = RecipeIngredient(recipe_id=basic_axe.id, item=get_item('stick'), item_amount=4)
     session.add(basic_axe_ingredient_2)
-
     session.commit()
+    
     return
