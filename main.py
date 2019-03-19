@@ -46,7 +46,7 @@ async def on_message(message):
     elif command == '!craft':
         response = craft.run_command(message, message_content)
     elif command == '!recipes':
-        response = recipes.run_command(message, message_content)
+        response = recipes.run_command(message_content)
     elif command == '!use':
         response = use.run_command(message, message_content)
     elif command == '!char':

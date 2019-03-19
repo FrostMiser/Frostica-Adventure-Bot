@@ -4,7 +4,7 @@ from models.recipe import Recipe
 from models.recipe_ingredient import RecipeIngredient
 
 
-def run_command(message, message_content):
+def run_command(message_content):
     session = get_session()
     recipe_name = ' '.join(message_content.split(" ")[1:]) if len(message_content.split(" ")) > 1 else None
     if recipe_name:
