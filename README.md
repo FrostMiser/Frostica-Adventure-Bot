@@ -9,7 +9,9 @@ A role-playing game for discord which takes place on the continent of Frostica. 
 * !char - Shows information about your character.
 * !inv - Displays your inventory.
 * !craft <item> - Craft an item using items in your inventory.
+* !chop - Chop trees in the area.
 * !recipes - Display a list of crafting recipes.
+
 
 ## Player Commands (not complete)
 * !map - Display the map of the area around you.
@@ -17,7 +19,6 @@ A role-playing game for discord which takes place on the continent of Frostica. 
 * !move <direction> - move your character in a direction. Options are north, east, south, west.
 * !cast <spell> - Casts a spell in your spellbook.
 * !spellbook - Lists the spells in your spellbook.
-* !chop - Chop trees in the area.
 * !hunt - Hunt for wild animals in the area.
 
 
