@@ -20,11 +20,12 @@ async def on_message(message):
     command = message_content.split(" ")[0] if message_content.split(" ") else None
     if not command or message.author == client.user:
         return
-    initialize_player(message.author.name, message.author.id)
 
     if not command.startswith('!'):
         return
 
+    initialize_player(message.author.name, message.author.id)
+    
     if command == '!map':
         response = area_map.run_command(message, message_content)
     elif command == '!enter':
