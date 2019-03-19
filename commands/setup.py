@@ -9,13 +9,13 @@ from common.database import db_engine
 
 # ToDo Add permission checking for this command
 def run_command():
-    _populate_items(db_engine)
-    _populate_recipes(db_engine)
+    _populate_items()
+    _populate_recipes()
     response = 'Setup complete.'
     return response
 
 
-def _populate_items(db_engine):
+def _populate_items():
     session_maker = sessionmaker(bind=db_engine)
     session = session_maker()
     session.query(Item).delete()
@@ -78,7 +78,7 @@ def _populate_items(db_engine):
     session.commit()
 
 
-def _populate_recipes(db_engine):
+def _populate_recipes():
     session_maker = sessionmaker(bind=db_engine)
     session = session_maker()
     session.query(Recipe).delete()
