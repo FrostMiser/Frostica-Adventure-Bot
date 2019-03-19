@@ -45,12 +45,3 @@ def get_recipe_ingredients_by_recipe_id(recipe_id):
     session.expunge(item)
     session.close()
     return item
-
-
-def get_player_by_id(player_id):
-    session_maker = sessionmaker(bind=db_engine)
-    session = session_maker()
-    player = session.query(Player).filter(Player.id == player_id).first()
-    session.expunge(player)
-    session.close()
-    return player
