@@ -8,6 +8,8 @@ class Player(Base):
     __tablename__ = 'player'
 
     id = Column(Integer, primary_key=True)
+    x = Column(Integer, default=0)
+    y = Column(Integer, default=0)
     name = Column(String)
     health = Column(Integer, default=10)
     hunger = Column(Integer, default=10)
@@ -19,3 +21,4 @@ class Player(Base):
     max_mana = Column(Integer, default=0)
     max_inventory_size = Column(Integer)
     inventory = relationship('models.player_inventory.PlayerInventory')
+    dimension = Column(String, default='overworld')
