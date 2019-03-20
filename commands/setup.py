@@ -85,6 +85,7 @@ def _populate_items():
 def _populate_tiles():
     session_maker = sessionmaker(bind=db_engine)
     session = session_maker()
+    session.query(Tile).delete()
 
     # shouldn't exist normally
     session.add(Tile(id=-1, name='barrier', emoji_name='no_entry_sign', display_emoji='🚫', traversable=False))
