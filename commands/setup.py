@@ -88,7 +88,7 @@ def _populate_tiles():
 
     # shouldn't exist normally
     session.add(Tile(id=-1, name='barrier', emoji_name='no_entry_sign', display_emoji='🚫', traversable=False))
-    
+
     # exists
     session.add(Tile(id=0, name='mountains', emoji_name='mount_fuji', display_emoji='🗻'))
     session.add(Tile(id=1, name='flat snow', emoji_name='white_large_square', display_emoji='⬜'))
@@ -124,4 +124,3 @@ def _populate_recipes():
     session.commit()
 
     return
-  

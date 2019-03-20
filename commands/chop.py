@@ -16,7 +16,7 @@ def run_command(message):
     possible_items = {item.id: item.chop_drop_chance for item in item_lookup_results}
 
     chopped_item_id = random.choices(list(possible_items.keys()), possible_items.values())[0]
-    chopped_item = session.query(Item).filter(Item.id == chopped_item_id ).first()
+    chopped_item = session.query(Item).filter(Item.id == chopped_item_id).first()
 
     player_inventory = session.query(PlayerInventory).filter(PlayerInventory.item_id == chopped_item.id).first()
 
