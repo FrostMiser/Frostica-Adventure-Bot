@@ -1,6 +1,7 @@
+from sqlalchemy import Column, Integer, String, Boolean
+
 from common.base import Base
 
-from sqlalchemy import Column, Integer, String, Boolean
 
 class Tile(Base):
     __tablename__ = 'tile'

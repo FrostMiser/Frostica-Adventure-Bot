@@ -1,13 +1,12 @@
 """This is the main module which runs this application"""
-from commands import cast, char, chop, craft, enter, forage, hunt, inv, map as area_map, mine, move, recipes, spellbook,\
+from commands import cast, char, chop, craft, enter, forage, hunt, inv, map as area_map, mine, move, recipes, spellbook, \
     use, setup
 import discord
 
 import settings
-from common.initialize import initialize_player
 from common.base import Base
 from common.database import db_engine
-
+from common.initialize import initialize_player
 
 client = discord.Client()
 Base.metadata.create_all(db_engine)
@@ -25,7 +24,7 @@ async def on_message(message):
         return
 
     initialize_player(message.author.name, message.author.id)
-    
+
     if command == '!map':
         response = area_map.run_command(message, message_content)
     elif command == '!enter':

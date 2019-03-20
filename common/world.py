@@ -1,6 +1,6 @@
+from common.database import db_engine
 from models.player import Player
 from models.tile import Tile
-from common.database import db_engine
 
 # TILE REFERENCE
 # 0 = mountains

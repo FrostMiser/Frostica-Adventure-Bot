@@ -1,9 +1,9 @@
 from sqlalchemy import Column, Integer, String, Boolean, ForeignKey
 from sqlalchemy.orm import relationship
 
-from models.recipe import Recipe
-from models.item import Item
 from common.base import Base
+from models.item import Item
+from models.recipe import Recipe
 
 
 class RecipeIngredient(Base):

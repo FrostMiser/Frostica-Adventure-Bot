@@ -1,7 +1,7 @@
-from common.base import Base
-
 from sqlalchemy import Column, Integer, String
 from sqlalchemy.orm import relationship
+
+from common.base import Base
 
 
 class Player(Base):

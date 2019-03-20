@@ -1,6 +1,6 @@
-from common.base import Base
-
 from sqlalchemy import Column, Integer, String
+
+from common.base import Base
 
 
 class Player(Base):

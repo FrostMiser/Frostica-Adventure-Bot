@@ -1,9 +1,10 @@
-from common.base import Base
-from models.player import Player
-from models.item import Item
-
 from sqlalchemy import Column, Integer, String, UniqueConstraint, ForeignKey
 from sqlalchemy.orm import relationship
+
+from common.base import Base
+from models.item import Item
+from models.player import Player
+
 
 # ToDo Consider renaming this, should this be something like PlayerInventoryItem?
 class PlayerInventory(Base):

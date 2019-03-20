@@ -1,8 +1,8 @@
+from sqlalchemy import Column, Integer, String
+
 from common.base import Base
 from models.player import Player
 from models.spell import Spell
-
-from sqlalchemy import Column, Integer, String
 
 
 class PlayerSpellbook(Base):

@@ -1,6 +1,8 @@
 from sqlalchemy.orm import sessionmaker
-from models.player import Player
+
 from common.database import db_engine
+from models.player import Player
+
 
 def run_command(message):
     session_maker = sessionmaker(bind=db_engine)
