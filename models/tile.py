@@ -12,3 +12,8 @@ class Tile(Base):
     emoji_name = Column(String)
     interactive = Column(Boolean, default=False)
     traversable = Column(Boolean, default=True)
+
+    can_chop = Column(Boolean, default=False)
+    can_mine = Column(Boolean, default=False)
+    can_hunt = Column(Boolean, default=False)
+    can_forage = Column(Boolean, default=False)
