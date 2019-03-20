@@ -7,6 +7,7 @@ from models.player import Player
 from models.player_inventory import PlayerInventory
 from common.world import get_tile_from
 
+
 def run_command(message):
     session_maker = sessionmaker(bind=db_engine)
     session = session_maker()
