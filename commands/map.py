@@ -21,7 +21,7 @@ def _emojify_area(area, player, session):
     return result
 
 
-def run_command(message, message_content):
+def run_command(message):
     session_maker = sessionmaker(bind=db_engine)
     session = session_maker()
     player = session.query(Player).filter(Player.id == message.author.id).first()
