@@ -13,7 +13,7 @@ A role-playing game for discord which takes place on the continent of Frostica. 
 * !recipes - Display a list of crafting recipes.
 * !map - Display the map of the area around you.
 * !move <direction> - Move your character in a direction. Options are north, east, south, west.
-* !equip <item> - Equip an item in your inventory.
+* !equip <item> - Equip an item from your inventory.
 
 ## Player Commands (not complete)
 * !enter - Attempt to enter the area of the map you are in (dungeons, houses, etc).
