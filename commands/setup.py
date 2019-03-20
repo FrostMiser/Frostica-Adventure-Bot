@@ -3,6 +3,7 @@ from sqlalchemy.orm import sessionmaker
 from common.base import Base
 from common.helpers import get_item
 from models.item import Item
+from models.tile import Tile
 from models.recipe import Recipe
 from models.recipe_ingredient import RecipeIngredient
 from common.database import db_engine
@@ -10,6 +11,7 @@ from common.database import db_engine
 # ToDo Add permission checking for this command
 def run_command():
     _populate_items()
+    _populate_tiles()
     _populate_recipes()
     response = 'Setup complete.'
     return response
@@ -79,6 +81,21 @@ def _populate_items():
     session.commit()
 
 
+def _populate_tiles():
+    session_maker = sessionmaker(bind=db_engine)
+    session = session_maker()
+
+    # shouldn't exist normally
+    session.add(Tile(id=-1, name='barrier', emoji_name='no_entry_sign', display_emoji='🚫', traversable=False))
+    
+    # exists
+    session.add(Tile(id=0, name='mountains', emoji_name='mount_fuji', display_emoji='🗻'))
+    session.add(Tile(id=1, name='flat snow', emoji_name='white_large_square', display_emoji='⬜'))
+    session.add(Tile(id=2, name='water', emoji_name='large_blue_diamond', display_emoji='🔷'))
+    session.add(Tile(id=3, name='trees', emoji_name='evergreen_tree', display_emoji='🌲', interactive=True))
+    session.commit()
+
+
 def _populate_recipes():
     session_maker = sessionmaker(bind=db_engine)
     session = session_maker()
@@ -106,3 +123,4 @@ def _populate_recipes():
     session.commit()
 
     return
+  
