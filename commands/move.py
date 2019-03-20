@@ -1,9 +1,8 @@
 from sqlalchemy.orm import sessionmaker
 
 from common.database import db_engine
-from common.world import world, get_tile, get_tile_id, get_tile_from
+from common.world import get_tile, get_tile_id, get_tile_from
 from models.player import Player
-from models.tile import Tile
 
 
 def _is_traversable(x, y, session):
