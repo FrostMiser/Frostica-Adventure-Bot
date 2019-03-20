@@ -23,10 +23,6 @@ def get_session():
     return session
 
 
-def get_item(name):
-    session_maker = sessionmaker(bind=db_engine)
-    session = session_maker()
+def get_item_by_name(name, session):
     item = session.query(Item).filter(Item.name == name).first()
-    session.expunge(item)
-    session.close()
     return item

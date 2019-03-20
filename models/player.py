@@ -1,8 +1,8 @@
-from sqlalchemy import Column, Integer, String
+from sqlalchemy import Column, Integer, String, ForeignKey
 from sqlalchemy.orm import relationship
 
 from common.base import Base
-
+from models.item import Item
 
 class Player(Base):
     __tablename__ = 'player'
@@ -22,3 +22,6 @@ class Player(Base):
     max_inventory_size = Column(Integer)
     inventory = relationship('models.player_inventory.PlayerInventory')
     dimension = Column(String, default='overworld')
+
+    main_hand_item_id = Column(Integer, ForeignKey(Item.id))
+    main_hand_item = relationship('models.item.Item', foreign_keys=[main_hand_item_id])

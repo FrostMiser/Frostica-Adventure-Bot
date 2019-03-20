@@ -2,7 +2,7 @@ from sqlalchemy.orm import sessionmaker
 
 from common.base import Base
 from common.database import db_engine
-from common.helpers import get_item
+from common.helpers import get_item_by_name
 from models.item import Item
 from models.recipe import Recipe
 from models.recipe_ingredient import RecipeIngredient
@@ -77,8 +77,8 @@ def _populate_items():
     session.add(Item(id=601, name='wood', chop_drop_chance=100))
 
     # 801 - 1200 crafted items, tools, armor, etc
-    session.add(Item(id=801, name='basic pickaxe'))
-    session.add(Item(id=802, name='basic axe'))
+    session.add(Item(id=801, name='basic pickaxe', equipable=True))
+    session.add(Item(id=802, name='basic axe', equipable=True))
     session.commit()
 
 
@@ -105,22 +105,22 @@ def _populate_recipes():
     session.query(RecipeIngredient).delete()
 
     # Basic Pickaxe
-    basic_pickaxe = Recipe(id=1, name='basic pickaxe', item=get_item('basic pickaxe'))
+    basic_pickaxe = Recipe(id=1, name='basic pickaxe', item=get_item_by_name('basic pickaxe', session))
     session.add(basic_pickaxe)
 
-    basic_pickaxe_ingredient_1 = RecipeIngredient(recipe_id=basic_pickaxe.id, item=get_item('stone'), item_amount=7)
+    basic_pickaxe_ingredient_1 = RecipeIngredient(recipe_id=basic_pickaxe.id, item=get_item_by_name('stone', session), item_amount=7)
     session.add(basic_pickaxe_ingredient_1)
-    basic_pickaxe_ingredient_2 = RecipeIngredient(recipe_id=basic_pickaxe.id, item=get_item('stick'), item_amount=4)
+    basic_pickaxe_ingredient_2 = RecipeIngredient(recipe_id=basic_pickaxe.id, item=get_item_by_name('stick', session), item_amount=4)
     session.add(basic_pickaxe_ingredient_2)
     session.commit()
 
     # Basic axe
-    basic_axe = Recipe(id=2, name='basic axe', item=get_item('basic axe'))
+    basic_axe = Recipe(id=2, name='basic axe', item=get_item_by_name('basic axe', session))
     session.add(basic_axe)
 
-    basic_axe_ingredient_1 = RecipeIngredient(recipe_id=basic_axe.id, item=get_item('stone'), item_amount=5)
+    basic_axe_ingredient_1 = RecipeIngredient(recipe_id=basic_axe.id, item=get_item_by_name('stone', session), item_amount=5)
     session.add(basic_axe_ingredient_1)
-    basic_axe_ingredient_2 = RecipeIngredient(recipe_id=basic_axe.id, item=get_item('stick'), item_amount=4)
+    basic_axe_ingredient_2 = RecipeIngredient(recipe_id=basic_axe.id, item=get_item_by_name('stick', session), item_amount=4)
     session.add(basic_axe_ingredient_2)
     session.commit()
 
