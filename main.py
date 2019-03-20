@@ -26,7 +26,7 @@ async def on_message(message):
     initialize_player(message.author.name, message.author.id)
 
     if command == '!map':
-        response = area_map.run_command(message, message_content)
+        response = area_map.run_command(message)
     elif command == '!enter':
         response = enter.run_command(message, message_content)
     elif command == '!move':
