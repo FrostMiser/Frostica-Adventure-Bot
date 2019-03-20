@@ -41,13 +41,13 @@ async def on_message(message):
     elif command == '!mine':
         response = mine.run_command(message)
     elif command == '!chop':
-        response = chop.run_command(message, message_content)
+        response = chop.run_command(message)
     elif command == '!hunt':
-        response = hunt.run_command(message, message_content)
+        response = hunt.run_command(message)
     elif command == '!craft':
         response = craft.run_command(message, message_content)
     elif command == '!recipes':
-        response = recipes.run_command(message, message_content)
+        response = recipes.run_command(message_content)
     elif command == '!use':
         response = use.run_command(message, message_content)
     elif command == '!char':

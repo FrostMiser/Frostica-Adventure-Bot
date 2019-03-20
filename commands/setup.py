@@ -10,14 +10,14 @@ from common.database import db_engine
 
 # ToDo Add permission checking for this command
 def run_command():
-    _populate_items(db_engine)
-    _populate_tiles(db_engine)
-    _populate_recipes(db_engine)
+    _populate_items()
+    _populate_tiles()
+    _populate_recipes()
     response = 'Setup complete.'
     return response
 
 
-def _populate_items(db_engine):
+def _populate_items():
     session_maker = sessionmaker(bind=db_engine)
     session = session_maker()
     session.query(Item).delete()
@@ -65,16 +65,23 @@ def _populate_items(db_engine):
     session.add(Item(id=213, name='spinach', forage_drop_chance=2, edible=True, hunger_satisfaction=1))
     session.add(Item(id=214, name='cauliflower', forage_drop_chance=1, edible=True, hunger_satisfaction=9))
     session.add(Item(id=215, name='radish', forage_drop_chance=1, edible=True, hunger_satisfaction=9))
+    session.add(Item(id=216, name='lemon', forage_drop_chance=1, edible=True, hunger_satisfaction=2))
     # 401 - 600 hunting items
+    session.add(Item(id=401, name='rat', hunt_drop_chance=100, chop_drop_chance=1))
+    session.add(Item(id=402, name='chicken', hunt_drop_chance=5))
+    session.add(Item(id=403, name='boar', hunt_drop_chance=1))
+    session.add(Item(id=404, name='turkey', hunt_drop_chance=1))
+
     # 601 - 800 wood chopping items
+    session.add(Item(id=601, name='wood', chop_drop_chance=100))
 
     # 801 - 1200 crafted items, tools, armor, etc
-    session.add(Item(id=401, name='basic pickaxe'))
-    session.add(Item(id=402, name='basic axe'))
+    session.add(Item(id=801, name='basic pickaxe'))
+    session.add(Item(id=802, name='basic axe'))
     session.commit()
 
 
-def _populate_tiles(db_engine):
+def _populate_tiles():
     session_maker = sessionmaker(bind=db_engine)
     session = session_maker()
 
@@ -89,7 +96,7 @@ def _populate_tiles(db_engine):
     session.commit()
 
 
-def _populate_recipes(db_engine):
+def _populate_recipes():
     session_maker = sessionmaker(bind=db_engine)
     session = session_maker()
     session.query(Recipe).delete()
@@ -114,5 +121,6 @@ def _populate_recipes(db_engine):
     basic_axe_ingredient_2 = RecipeIngredient(recipe_id=basic_axe.id, item=get_item('stick'), item_amount=4)
     session.add(basic_axe_ingredient_2)
     session.commit()
-    
+
     return
+  
