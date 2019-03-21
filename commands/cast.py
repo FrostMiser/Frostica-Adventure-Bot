@@ -20,5 +20,6 @@ def run_command(message, message_content):
             response = 'You have teleported to {} {}.'.format(location_x, location_y)
         else:
             response = 'You must say where you want to teleport to with !cast teleport x y.'
-
+    else:
+        response = 'That is not a spell you know.'
     return response
