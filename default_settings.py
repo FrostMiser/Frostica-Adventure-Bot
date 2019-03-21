@@ -3,5 +3,6 @@
 
 settings = {
     'database_engine': 'sqlite:///path/to/database.db',
-    'api_token': 'example'
+    'api_token': 'example',
+    'owners': ['the id of the owner', 'another owner id']
 }
