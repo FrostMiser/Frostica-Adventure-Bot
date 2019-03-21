@@ -8,13 +8,16 @@ from models.recipe import Recipe
 from models.recipe_ingredient import RecipeIngredient
 from models.tile import Tile
 
+from settings import settings
 
-# ToDo Add permission checking for this command
-def run_command():
-    _populate_items()
-    _populate_tiles()
-    _populate_recipes()
-    response = 'Setup complete.'
+def run_command(message):
+    if message.author.id not in settings['owners']:
+        response = 'You are not an owner.'
+    else:
+        _populate_items()
+        _populate_tiles()
+        _populate_recipes()
+        response = 'Setup complete.'
     return response
 
 

@@ -54,7 +54,7 @@ async def on_message(message):
     elif command == '!inv':
         response = inv.run_command(message)
     elif command == '!setup':
-        response = setup.run_command()
+        response = setup.run_command(message)
     elif command == '!equip':
         response = equip.run_command(message, message_content)
     else:
