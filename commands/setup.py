@@ -90,10 +90,11 @@ def _populate_tiles():
     session = session_maker()
     session.query(Tile).delete()
 
-    # shouldn't exist normally
+    # This tile shouldn't exist normally, the ID for this tile is set for parts of the world without a tile in
+    # common.world.get_tile_id
     session.add(Tile(id=-1, name='barrier', emoji_name='no_entry_sign', display_emoji='🚫', traversable=False))
 
-    # exists
+    # All other tiles for the world
     session.add(Tile(id=0, name='snow covered mountains', emoji_name='mount_fuji', display_emoji='🗻', can_hunt=True,
                      can_mine=True))
     session.add(Tile(id=1, name='flat snow', emoji_name='white_large_square', display_emoji='⬜', can_hunt=True))
