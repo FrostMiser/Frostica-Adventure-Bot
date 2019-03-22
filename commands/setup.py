@@ -1,14 +1,18 @@
+import json
+import os
+
 from sqlalchemy.orm import sessionmaker
 
-from common.base import Base
 from common.database import db_engine
 from common.helpers import get_item_by_name
 from models.item import Item
 from models.recipe import Recipe
 from models.recipe_ingredient import RecipeIngredient
 from models.tile import Tile
+from common.world import world
 
 from settings import settings
+
 
 def run_command(message):
     if message.author.id not in settings['owners']:
@@ -17,6 +21,7 @@ def run_command(message):
         _populate_items()
         _populate_tiles()
         _populate_recipes()
+        _populate_world_tiles()
         response = 'Setup complete.'
     return response
 
@@ -115,9 +120,11 @@ def _populate_recipes():
     basic_pickaxe = Recipe(id=1, name='basic pickaxe', item=get_item_by_name('basic pickaxe', session))
     session.add(basic_pickaxe)
 
-    basic_pickaxe_ingredient_1 = RecipeIngredient(recipe_id=basic_pickaxe.id, item=get_item_by_name('stone', session), item_amount=7)
+    basic_pickaxe_ingredient_1 = RecipeIngredient(recipe_id=basic_pickaxe.id, item=get_item_by_name('stone', session),
+                                                  item_amount=7)
     session.add(basic_pickaxe_ingredient_1)
-    basic_pickaxe_ingredient_2 = RecipeIngredient(recipe_id=basic_pickaxe.id, item=get_item_by_name('stick', session), item_amount=4)
+    basic_pickaxe_ingredient_2 = RecipeIngredient(recipe_id=basic_pickaxe.id, item=get_item_by_name('stick', session),
+                                                  item_amount=4)
     session.add(basic_pickaxe_ingredient_2)
     session.commit()
 
@@ -125,10 +132,19 @@ def _populate_recipes():
     basic_axe = Recipe(id=2, name='basic axe', item=get_item_by_name('basic axe', session))
     session.add(basic_axe)
 
-    basic_axe_ingredient_1 = RecipeIngredient(recipe_id=basic_axe.id, item=get_item_by_name('stone', session), item_amount=5)
+    basic_axe_ingredient_1 = RecipeIngredient(recipe_id=basic_axe.id, item=get_item_by_name('stone', session),
+                                              item_amount=5)
     session.add(basic_axe_ingredient_1)
-    basic_axe_ingredient_2 = RecipeIngredient(recipe_id=basic_axe.id, item=get_item_by_name('stick', session), item_amount=4)
+    basic_axe_ingredient_2 = RecipeIngredient(recipe_id=basic_axe.id, item=get_item_by_name('stick', session),
+                                              item_amount=4)
     session.add(basic_axe_ingredient_2)
     session.commit()
-
     return
+
+
+# Populates world tiles from world.json, if the file exists. Otherwise default world is used.
+def _populate_world_tiles():
+    if os.path.isfile('world.json'):
+        world_file = open('world.json', 'r')
+        world['tiles'] = json.loads(world_file.read())
+
