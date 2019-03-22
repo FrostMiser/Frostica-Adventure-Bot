@@ -19,9 +19,13 @@ def _move(player, session, x=0, y=0):
 
 direction_dict = {
     'north': [0, -1],
+    'n': [0, -1],
     'south': [0, 1],
+    's': [0, 1],
     'east': [1, 0],
-    'west': [-1, 0]
+    'e': [1, 0],
+    'west': [-1, 0],
+    'w': [-1, 0]
 }
 
 
