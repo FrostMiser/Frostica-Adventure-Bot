@@ -3,10 +3,11 @@ from models.player import Player
 from models.tile import Tile
 
 # TILE REFERENCE
-# 0 = mountains
+# 0 = show covered mountains
 # 1 = flat snow
 # 2 = water
 # 3 = trees
+# 4 = mountains
 
 world = {
     'x': 0,
