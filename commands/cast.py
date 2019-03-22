@@ -1,6 +1,7 @@
 from models.player import Player
 from common.helpers import get_session
 
+
 # ToDo Add mana cost and get spells from database. This version of teleport is temporary to help get around the map
 def run_command(message, message_content):
     spell_name = ' '.join(message_content.split(" ")[1:2]) if len(message_content.split(" ")) > 1 else None
