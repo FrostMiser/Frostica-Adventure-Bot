@@ -21,10 +21,13 @@ A role-playing game for discord which takes place on the continent of Frostica. 
 * !spellbook - List the spells in your spellbook.
 * !hunt - Hunt for wild animals in the area.
 
-
 ## Survival
 To survive, you will need to find food and water. Eat food or drink water stored in your inventory with !use <item>. 
 You will also need to stay warm in cold areas.
+
+### Hunger and Thirst
+Hunger and thirst are affected by activities such as mining, chopping, and movement. Different types of terrain affect 
+hunger and thirst differently.
 
 ## Admin Commands
 * !setup - Setup the bot for first time use. This populates the database with items and recipes.
