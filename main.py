@@ -3,10 +3,10 @@ from commands import cast, char, chop, craft, enter, forage, hunt, inv, map as a
     use, setup, equip
 import discord
 
-import settings
+from configuration import settings
 from common.base import Base
 from common.database import db_engine
-from common.initialize import initialize_player
+from common.initialize import initialize_player, initialize_world
 from common.helpers import get_session, complete_command
 
 client = discord.Client()
@@ -27,6 +27,7 @@ async def on_message(message):
         return
 
     player = initialize_player(message.author.name, message.author.id, session)
+    initialize_world()
 
     if command == '!map':
         response = area_map.run_command(message, session)

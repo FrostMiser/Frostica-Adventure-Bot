@@ -11,7 +11,7 @@ from models.recipe_ingredient import RecipeIngredient
 from models.tile import Tile
 from common.world import world
 
-from settings import settings
+from configuration import settings
 
 
 def run_command(message, session):
@@ -146,11 +146,4 @@ def _populate_recipes(session):
     session.add(basic_axe_ingredient_2)
     session.commit()
     return
-
-
-# Populates world tiles from world.json, if the file exists. Otherwise default world is used.
-def _populate_world_tiles(session):
-    if os.path.isfile('world.json'):
-        world_file = open('world.json', 'r')
-        world['tiles'] = json.loads(world_file.read())
 
