@@ -27,5 +27,5 @@ def run_command(message, session):
         else:
             player.inventory.append(PlayerInventory(player_id=player.id, item_id=hunted_item.id, item_amount=1))
         response = ':dagger: {} went hunting and found a {}'.format(player.name, hunted_item.name)
-        response ++ get_hunger_and_thirst_warnings()
+        response += get_hunger_and_thirst_warnings(player)
     return response
