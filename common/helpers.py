@@ -30,22 +30,35 @@ def get_item_by_name(name, session):
 
 
 def drain_player_hunger_and_thirst(player):
-    if player.hunger > 0 and player.thirst > 0:
+    if player.hunger > 0:
         player.hunger -= 1
+    else:
+        if player.health > 0:
+            player.health -= 1
+    if player.thirst > 0:
         player.thirst -= 1
+    else:
+        if player.health > 0:
+            player.health -= 1
 
 
 # Code that gets run upon the completion of commands
 def complete_command(player, session):
     response = ''
     if player.hunger == 0 or player.thirst == 0:
-        if player.thirst == 0:
-            message = '{} died of thirst.️'.format(player.name)
+        if player.health == 0:
+            if player.thirst == 0:
+                message = '{} died of thirst.️'.format(player.name)
+            else:
+                message = '{} died of hunger️r'.format(player.name)
+            message_dashes = re.sub('.', '-', message)
+            response = '\n☠️\n`{}`\n`{}`\n`{}`\n☠️\n'.format(message_dashes, message, message_dashes)
+            _reset_player(player, session)
         else:
-            message = '{} died of hunger️r'.format(player.name)
-        message_dashes = re.sub('.', '-', message)
-        response = '\n☠️\n`{}`\n`{}`\n`{}`\n☠️\n'.format(message_dashes, message, message_dashes)
-        _reset_player(player, session)
+            if player.thirst == 0:
+                response = '\n:warning: {} is thirsty.'.format(player.name)
+            else:
+                response = '\n:warning: {} is hungry.'.format(player.name)
     return response
 
 

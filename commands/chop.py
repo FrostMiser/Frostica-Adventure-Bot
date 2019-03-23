@@ -6,6 +6,7 @@ from models.player_inventory import PlayerInventory
 from common.world import get_tile_from
 from common.helpers import drain_player_hunger_and_thirst
 
+
 def run_command(message, session):
     player = session.query(Player).filter(Player.id == message.author.id).first()
 
