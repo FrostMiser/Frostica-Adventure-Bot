@@ -3,6 +3,7 @@ from sqlalchemy.orm import sessionmaker
 from common.database import db_engine
 from models.item import Item
 from models.player_inventory import PlayerInventory
+from models.player import Player
 
 '''
 This file contains helpers for making it easier to get data and do other things.
@@ -50,4 +51,6 @@ def _reset_player(player, session):
     player_inventory = session.query(PlayerInventory).filter(PlayerInventory.player_id == player_id).all()
     for player_inventory_item in player_inventory:
         session.delete(player_inventory_item)
-    session.delete(player)
+    delete_player = session.query(Player).get(player_id)
+    if delete_player:
+        session.delete(delete_player)
