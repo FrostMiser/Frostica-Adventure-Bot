@@ -1,6 +1,6 @@
 from common.world import get_tile, get_tile_id, get_tile_from
 from models.player import Player
-from common.helpers import drain_player_hunger_and_thirst
+from common.helpers import drain_player_hunger_and_thirst, get_hunger_and_thirst_warnings
 
 
 def _is_traversable(x, y, session):
@@ -51,4 +51,5 @@ def run_command(message, message_content, session):
     current_tile = get_tile(current_tile_id, session)
 
     response += f"`> you are at x: {player.x}, y: {player.y} ({current_tile.name})`"
+    response += get_hunger_and_thirst_warnings(player)
     return response

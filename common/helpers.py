@@ -42,6 +42,15 @@ def drain_player_hunger_and_thirst(player):
             player.health -= 1
 
 
+def get_hunger_and_thirst_warnings(player):
+    response = ''
+    if player.thirst == 0:
+        response += '\n:warning: {} is thirsty.'.format(player.name)
+    if player.hunger == 0:
+        response += '\n:warning: {} is hungry.'.format(player.name)
+    return response
+
+
 # Code that gets run upon the completion of commands
 def complete_command(player, session):
     response = ''
@@ -54,11 +63,6 @@ def complete_command(player, session):
             message_dashes = re.sub('.', '-', message)
             response = '\n☠️\n`{}`\n`{}`\n`{}`\n☠️\n'.format(message_dashes, message, message_dashes)
             _reset_player(player, session)
-        else:
-            if player.thirst == 0:
-                response = '\n:warning: {} is thirsty.'.format(player.name)
-            else:
-                response = '\n:warning: {} is hungry.'.format(player.name)
     return response
 
 
