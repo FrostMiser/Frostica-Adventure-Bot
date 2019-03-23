@@ -1,3 +1,5 @@
+import re
+
 from sqlalchemy.orm import sessionmaker
 
 from common.database import db_engine
@@ -36,11 +38,13 @@ def drain_player_hunger_and_thirst(player):
 # Code that gets run upon the completion of commands
 def complete_command(player, session):
     response = ''
-    if player.hunger == 0:
-        response = '\n{} has starved to death.'.format(player.name)
-        _reset_player(player, session)
-    if player.thirst == 0:
-        response = '\n{} died of thirst.'.format(player.name)
+    if player.hunger == 0 or player.thirst == 0:
+        if player.thirst == 0:
+            message = '{} died of thirst.️'.format(player.name)
+        else:
+            message = '{} died of hunger️r'.format(player.name)
+        message_dashes = re.sub('.', '-', message)
+        response = '\n☠️\n`{}`\n`{}`\n`{}`\n☠️\n'.format(message_dashes, message, message_dashes)
         _reset_player(player, session)
     return response
 
@@ -51,6 +55,4 @@ def _reset_player(player, session):
     player_inventory = session.query(PlayerInventory).filter(PlayerInventory.player_id == player_id).all()
     for player_inventory_item in player_inventory:
         session.delete(player_inventory_item)
-    delete_player = session.query(Player).get(player_id)
-    if delete_player:
-        session.delete(delete_player)
+    session.delete(player)
