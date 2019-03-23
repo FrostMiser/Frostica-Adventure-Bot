@@ -8,11 +8,9 @@ from models.player import Player
 from models.player_inventory import PlayerInventory
 
 
-def run_command(message, message_content):
+def run_command(message, message_content, session):
     item_name = ' '.join(message_content.split(" ")[1:]) if len(message_content.split(" ")) > 1 else None
     if item_name:
-        session_maker = sessionmaker(bind=db_engine)
-        session = session_maker()
         player = session.query(Player).filter(Player.id == message.author.id).first()
 
         item_lookup_result = session.query(Item).filter(Item.name == item_name).first()
@@ -37,18 +35,24 @@ def run_command(message, message_content):
 
 
 def _eat_item(player, player_inventory, session):
-    if player.hunger < player.max_hunger:
+    if player.hunger < player.max_hunger or player.thirst < player.max_thirst:
         item_name = player_inventory.item.name
         if player_inventory.item.hunger_satisfaction + player.hunger > player.max_hunger:
             player.hunger = player.max_hunger
         else:
             player.hunger = player_inventory.item.hunger_satisfaction + player.hunger
+
+        if player_inventory.item.thirst_satisfaction + player.thirst > player.max_thirst:
+            player.thirst = player.max_thirst
+        else:
+            player.thirst = player_inventory.item.thirst_satisfaction + player.thirst
+
         if player_inventory.item_amount == 1:
             session.delete(player_inventory)
         else:
             player_inventory.item_amount -= 1
         session.commit()
-        response = 'You eat the {} and feel less hungry.'.format(item_name)
+        response = 'You eat the {}.'.format(item_name)
     else:
-        response = 'You aren\'t hungry.'
+        response = 'You aren\'t hungry or thirsty.'
     return response

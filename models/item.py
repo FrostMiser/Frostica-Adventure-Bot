@@ -16,6 +16,7 @@ class Item(Base):
 
     edible = Column(Boolean, default=False)
     hunger_satisfaction = Column(Integer, default=0)
+    thirst_satisfaction = Column(Integer, default=0)
 
     equipable = Column(Boolean, default=False)
     can_mine = Column(Boolean, default=False)

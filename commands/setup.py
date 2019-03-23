@@ -59,21 +59,32 @@ def _populate_items(session):
 
     # 201 - 400 foraged items
     session.add(Item(id=201, name='stick', forage_drop_chance=120))
-    session.add(Item(id=202, name='leaf', forage_drop_chance=20))
-    session.add(Item(id=203, name='pine needle', forage_drop_chance=20))
-    session.add(Item(id=204, name='brown mushroom', forage_drop_chance=5))
-    session.add(Item(id=205, name='cucumber', forage_drop_chance=10, edible=True, hunger_satisfaction=5))
-    session.add(Item(id=206, name='blueberry', forage_drop_chance=10, edible=True, hunger_satisfaction=1))
-    session.add(Item(id=207, name='cherry', forage_drop_chance=10, edible=True, hunger_satisfaction=1))
-    session.add(Item(id=208, name='banana', forage_drop_chance=10, edible=True, hunger_satisfaction=2))
-    session.add(Item(id=209, name='orange', forage_drop_chance=10, edible=True, hunger_satisfaction=2))
-    session.add(Item(id=210, name='pear', forage_drop_chance=10, edible=True, hunger_satisfaction=2))
+    session.add(Item(id=202, name='strawberry', forage_drop_chance=10, edible=True, hunger_satisfaction=1,
+                     thirst_satisfaction=2))
+    session.add(Item(id=203, name='grapefruit', forage_drop_chance=4, edible=True, hunger_satisfaction=4,
+                     thirst_satisfaction=7))
+    session.add(Item(id=204, name='pineapple', forage_drop_chance=3, edible=True, hunger_satisfaction=7,
+                     thirst_satisfaction=10))
+    session.add(Item(id=205, name='cucumber', forage_drop_chance=4, edible=True, hunger_satisfaction=7,
+                     thirst_satisfaction=7))
+    session.add(Item(id=206, name='blueberry', forage_drop_chance=10, edible=True, hunger_satisfaction=1,
+                     thirst_satisfaction=2))
+    session.add(Item(id=207, name='cherry', forage_drop_chance=10, edible=True, hunger_satisfaction=1,
+                     thirst_satisfaction=2))
+    session.add(Item(id=208, name='banana', forage_drop_chance=10, edible=True, hunger_satisfaction=1))
+    session.add(Item(id=209, name='orange', forage_drop_chance=10, edible=True, hunger_satisfaction=2,
+                     thirst_satisfaction=3))
+    session.add(Item(id=210, name='pear', forage_drop_chance=10, edible=True, hunger_satisfaction=2,
+                     thirst_satisfaction=3))
     session.add(Item(id=211, name='carrot', forage_drop_chance=10, edible=True, hunger_satisfaction=2))
     session.add(Item(id=212, name='broccoli', forage_drop_chance=5, edible=True, hunger_satisfaction=7))
     session.add(Item(id=213, name='spinach', forage_drop_chance=2, edible=True, hunger_satisfaction=1))
     session.add(Item(id=214, name='cauliflower', forage_drop_chance=1, edible=True, hunger_satisfaction=9))
-    session.add(Item(id=215, name='radish', forage_drop_chance=1, edible=True, hunger_satisfaction=9))
-    session.add(Item(id=216, name='lemon', forage_drop_chance=1, edible=True, hunger_satisfaction=2))
+    session.add(Item(id=215, name='radish', forage_drop_chance=2, edible=True, hunger_satisfaction=9))
+    session.add(Item(id=216, name='lemon', forage_drop_chance=2, edible=True, hunger_satisfaction=2,
+                     thirst_satisfaction=1))
+    session.add(Item(id=217, name='watermelon', forage_drop_chance=1, edible=True, hunger_satisfaction=5,
+                     thirst_satisfaction=15))
     # 401 - 600 hunting items
     session.add(Item(id=401, name='rat', hunt_drop_chance=100, chop_drop_chance=1))
     session.add(Item(id=402, name='chicken', hunt_drop_chance=5))
