@@ -31,6 +31,8 @@ direction_dict = {
 
 def _move_direction(player, session, direction):
     if _move(player, session, *direction_dict[direction]):
+        if player.hunger > 0:
+            player.hunger -= 1
         return f"you move {direction}\n"
     else:
         x, y = direction_dict[direction]
