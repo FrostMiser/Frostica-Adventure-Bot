@@ -1,16 +1,12 @@
 import random
-from sqlalchemy.orm import sessionmaker
 
-from common.database import db_engine
 from models.item import Item
 from models.player import Player
 from models.player_inventory import PlayerInventory
 from common.world import get_tile_from
 
 
-def run_command(message):
-    session_maker = sessionmaker(bind=db_engine)
-    session = session_maker()
+def run_command(message, session):
     player = session.query(Player).filter(Player.id == message.author.id).first()
 
     tile = get_tile_from(player.x, player.y, session)
@@ -29,6 +25,5 @@ def run_command(message):
             player_inventory.item_amount += 1
         else:
             player.inventory.append(PlayerInventory(player_id=player.id, item_id=hunted_item.id, item_amount=1))
-        session.commit()
         response = ':dagger: {} went hunting and found a {}'.format(player.name, hunted_item.name)
     return response

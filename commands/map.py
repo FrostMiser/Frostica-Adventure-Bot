@@ -20,9 +20,7 @@ def _emojify_area(area, player, session):
     return result
 
 
-def run_command(message):
-    session_maker = sessionmaker(bind=db_engine)
-    session = session_maker()
+def run_command(message, session):
     player = session.query(Player).filter(Player.id == message.author.id).first()
 
     local_area = get_local_area(player.x, player.y)

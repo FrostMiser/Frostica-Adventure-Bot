@@ -7,6 +7,7 @@ import settings
 from common.base import Base
 from common.database import db_engine
 from common.initialize import initialize_player
+from common.helpers import get_session
 
 client = discord.Client()
 Base.metadata.create_all(db_engine)
@@ -15,6 +16,8 @@ Base.metadata.create_all(db_engine)
 @client.event
 async def on_message(message):
     """Main chat message event"""
+    session = get_session()
+
     message_content = message.content.lower()
     command = message_content.split(" ")[0] if message_content.split(" ") else None
     if not command or message.author == client.user:
@@ -23,42 +26,44 @@ async def on_message(message):
     if not command.startswith('!'):
         return
 
-    initialize_player(message.author.name, message.author.id)
+    player = initialize_player(message.author.name, message.author.id, session)
 
     if command == '!map':
-        response = area_map.run_command(message)
+        response = area_map.run_command(message, session)
     elif command == '!enter':
-        response = enter.run_command(message, message_content)
+        response = enter.run_command(message, message_content, session)
     elif command == '!move':
-        response = move.run_command(message, message_content)
+        response = move.run_command(message, message_content, session)
     elif command == '!cast':
-        response = cast.run_command(message, message_content)
+        response = cast.run_command(message, message_content, session)
     elif command == '!spellbook':
-        response = spellbook.run_command(message, message_content)
+        response = spellbook.run_command(message, message_content, session)
     elif command == '!forage':
-        response = forage.run_command(message)
+        response = forage.run_command(message, session)
     elif command == '!mine':
-        response = mine.run_command(message)
+        response = mine.run_command(message, session)
     elif command == '!chop':
-        response = chop.run_command(message)
+        response = chop.run_command(message, session)
     elif command == '!hunt':
-        response = hunt.run_command(message)
+        response = hunt.run_command(message, session)
     elif command == '!craft':
-        response = craft.run_command(message, message_content)
+        response = craft.run_command(message, message_content, session)
     elif command == '!recipes':
-        response = recipes.run_command(message_content)
+        response = recipes.run_command(message_content, session)
     elif command == '!use':
-        response = use.run_command(message, message_content)
+        response = use.run_command(message, message_content, session)
     elif command == '!char':
-        response = char.run_command(message)
+        response = char.run_command(message, session)
     elif command == '!inv':
-        response = inv.run_command(message)
+        response = inv.run_command(message, session)
     elif command == '!setup':
-        response = setup.run_command(message)
+        response = setup.run_command(message, session)
     elif command == '!equip':
-        response = equip.run_command(message, message_content)
+        response = equip.run_command(message, message_content, session)
     else:
         response = "Unknown command."
+
+    session.commit()
 
     if response:
         await client.send_message(message.channel, response)

@@ -3,12 +3,11 @@ from models.player import Player
 from models.player_inventory import PlayerInventory
 
 
-def run_command(message, message_content):
+def run_command(message, message_content, session):
     item_name = ' '.join(message_content.split(" ")[1:]) if len(message_content.split(" ")) > 1 else None
     if not item_name:
         return 'You must say which item you want to equip with !equip <item>.'
 
-    session = get_session()
     player = session.query(Player).filter(Player.id == message.author.id).first()
     item_lookup = get_item_by_name(item_name, session)
     if not item_lookup:
@@ -32,7 +31,6 @@ def run_command(message, message_content):
                 player_inventory_item.item_amount -= 1
             else:
                 session.delete(player_inventory_item)
-            session.commit()
             response = 'You equip your {}.'.format(item_name)
         else:
             response = 'That item may not be equipped.'

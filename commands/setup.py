@@ -14,21 +14,19 @@ from common.world import world
 from settings import settings
 
 
-def run_command(message):
+def run_command(message, session):
     if message.author.id not in settings['owners']:
         response = 'You are not an owner.'
     else:
-        _populate_items()
-        _populate_tiles()
-        _populate_recipes()
-        _populate_world_tiles()
+        _populate_items(session)
+        _populate_tiles(session)
+        _populate_recipes(session)
+        _populate_world_tiles(session)
         response = 'Setup complete.'
     return response
 
 
-def _populate_items():
-    session_maker = sessionmaker(bind=db_engine)
-    session = session_maker()
+def _populate_items(session):
     session.query(Item).delete()
 
     # 1 - 200 mined items
@@ -91,9 +89,7 @@ def _populate_items():
     session.commit()
 
 
-def _populate_tiles():
-    session_maker = sessionmaker(bind=db_engine)
-    session = session_maker()
+def _populate_tiles(session):
     session.query(Tile).delete()
 
     # This tile shouldn't exist normally, the ID for this tile is set for parts of the world without a tile in
@@ -111,9 +107,7 @@ def _populate_tiles():
     session.commit()
 
 
-def _populate_recipes():
-    session_maker = sessionmaker(bind=db_engine)
-    session = session_maker()
+def _populate_recipes(session):
     session.query(Recipe).delete()
     session.query(RecipeIngredient).delete()
 
@@ -144,7 +138,7 @@ def _populate_recipes():
 
 
 # Populates world tiles from world.json, if the file exists. Otherwise default world is used.
-def _populate_world_tiles():
+def _populate_world_tiles(session):
     if os.path.isfile('world.json'):
         world_file = open('world.json', 'r')
         world['tiles'] = json.loads(world_file.read())

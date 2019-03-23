@@ -26,3 +26,9 @@ def get_session():
 def get_item_by_name(name, session):
     item = session.query(Item).filter(Item.name == name).first()
     return item
+
+
+def drain_player_hunger_and_thirst(player):
+    if player.hunger > 1 and player.thirst > 1:
+        player.hunger -= 1
+        player.thirst -= 1

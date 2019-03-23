@@ -14,6 +14,7 @@ def run_command(message, message_content):
             recipe_ingredients = session.query(RecipeIngredient).filter(
                 RecipeIngredient.recipe_id == recipe.id).all()
             can_craft_item = True
+            session.commit()
             for recipe_ingredient in recipe_ingredients:
                 player_inventory_lookup = session.query(PlayerInventory).filter(
                     PlayerInventory.player_id == message.author.id,

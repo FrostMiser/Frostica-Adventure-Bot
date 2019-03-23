@@ -1,8 +1,6 @@
-from sqlalchemy.orm import sessionmaker
-
-from common.database import db_engine
 from common.world import get_tile, get_tile_id, get_tile_from
 from models.player import Player
+from common.helpers import drain_player_hunger_and_thirst
 
 
 def _is_traversable(x, y, session):
@@ -31,17 +29,14 @@ direction_dict = {
 
 def _move_direction(player, session, direction):
     if _move(player, session, *direction_dict[direction]):
-        if player.hunger > 0:
-            player.hunger -= 1
+        drain_player_hunger_and_thirst(player)
         return f"you move {direction}\n"
     else:
         x, y = direction_dict[direction]
         return f"you can't traverse (move over) {get_tile_from(player.x + x, player.y + y, session).name}\n"
 
 
-def run_command(message, message_content):
-    session_maker = sessionmaker(bind=db_engine)
-    session = session_maker()
+def run_command(message, message_content, session):
     player = session.query(Player).get(message.author.id)
 
     direction = ''.join(message_content.split(" ")[1:]) if len(message_content.split(" ")) > 1 else None
@@ -51,8 +46,6 @@ def run_command(message, message_content):
     else:
         return ("You must say which direction you want to use with !use <direction>.\n"
                 "valid directions are north, east, south, and west.")
-
-    session.commit()
 
     current_tile_id = get_tile_id(player.x, player.y)
     current_tile = get_tile(current_tile_id, session)
