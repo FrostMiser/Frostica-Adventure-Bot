@@ -7,7 +7,7 @@ import settings
 from common.base import Base
 from common.database import db_engine
 from common.initialize import initialize_player
-from common.helpers import get_session
+from common.helpers import get_session, complete_command
 
 client = discord.Client()
 Base.metadata.create_all(db_engine)
@@ -63,6 +63,7 @@ async def on_message(message):
     else:
         response = "Unknown command."
 
+    response += complete_command(player, session)
     session.commit()
 
     if response:
