@@ -3,12 +3,10 @@ from models.player import Player
 from common.helpers import drain_player_hunger_and_thirst, get_hunger_and_thirst_warnings
 
 
-def _is_traversable(x, y, session):
-    return get_tile_from(x, y, session).traversable
-
-
 def _move(player, session, x=0, y=0):
-    traversable = _is_traversable(player.x + x, player.y + y, session)
+    tile_moving_to = get_tile_from(player.x + x, player.y + y, session)
+    drain_player_hunger_and_thirst(player, tile_moving_to.hunger_drain_amount, tile_moving_to.thirst_drain_amount)
+    traversable = tile_moving_to.traversable
     if traversable:
         player.x += x
         player.y += y
@@ -29,7 +27,6 @@ direction_dict = {
 
 def _move_direction(player, session, direction):
     if _move(player, session, *direction_dict[direction]):
-        drain_player_hunger_and_thirst(player)
         return f"you move {direction}\n"
     else:
         x, y = direction_dict[direction]

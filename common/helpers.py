@@ -29,14 +29,14 @@ def get_item_by_name(name, session):
     return item
 
 
-def drain_player_hunger_and_thirst(player):
+def drain_player_hunger_and_thirst(player, hunger_amount=1, thirst_amount=1):
     if player.hunger > 0:
-        player.hunger -= 1
+        player.hunger = max(player.hunger-hunger_amount, 0)
     else:
         if player.health > 0:
             player.health -= 1
     if player.thirst > 0:
-        player.thirst -= 1
+        player.thirst = max(player.thirst-thirst_amount, 0)
     else:
         if player.health > 0:
             player.health -= 1

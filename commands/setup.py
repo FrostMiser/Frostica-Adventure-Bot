@@ -15,13 +15,12 @@ from configuration import settings
 
 
 def run_command(message, session):
-    if message.author.id not in settings['owners']:
+    if message.author.id not in settings.settings['owners']:
         response = 'You are not an owner.'
     else:
         _populate_items(session)
         _populate_tiles(session)
         _populate_recipes(session)
-        _populate_world_tiles(session)
         response = 'Setup complete.'
     return response
 
@@ -109,12 +108,14 @@ def _populate_tiles(session):
 
     # All other tiles for the world
     session.add(Tile(id=0, name='snow covered mountains', emoji_name='mount_fuji', display_emoji='🗻', can_hunt=True,
-                     can_mine=True))
-    session.add(Tile(id=1, name='flat snow', emoji_name='white_large_square', display_emoji='⬜', can_hunt=True))
+                     can_mine=True, hunger_drain_amount=5, thirst_drain_amount=5))
+    session.add(Tile(id=1, name='flat snow', emoji_name='white_large_square', display_emoji='⬜', can_hunt=True,
+                     hunger_drain_amount=1, thirst_drain_amount=1))
     session.add(Tile(id=2, name='water', emoji_name='large_blue_diamond', display_emoji='🔷', traversable=False))
     session.add(Tile(id=3, name='trees', emoji_name='evergreen_tree', display_emoji='🌲', can_chop=True,
-                     can_forage=True, can_hunt=True))
-    session.add(Tile(id=4, name='mountains', emoji_name='mountain', display_emoji='⛰️', can_hunt=True, can_mine=True))
+                     can_forage=True, can_hunt=True, hunger_drain_amount=1, thirst_drain_amount=1))
+    session.add(Tile(id=4, name='mountains', emoji_name='mountain', display_emoji='⛰️', can_hunt=True, can_mine=True,
+                     hunger_drain_amount=5, thirst_drain_amount=5))
     session.commit()
 
 
