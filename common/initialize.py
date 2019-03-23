@@ -1,6 +1,3 @@
-from sqlalchemy.orm import sessionmaker
-
-from common.database import db_engine
 from models.player import Player
 
 
