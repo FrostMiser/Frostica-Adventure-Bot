@@ -14,12 +14,12 @@ A role-playing game for discord which takes place on the continent of Frostica. 
 * !map - Display the map of the area around you.
 * !move <direction> - Move your character in a direction. Options are north, east, south, west.
 * !equip <item> - Equip an item from your inventory.
+* !hunt - Hunt for wild animals in the area.
 
 ## Player Commands (not complete)
 * !enter - Attempt to enter the area of the map you are in (dungeons, houses, etc).
 * !cast <spell> - Cast a spell in your spellbook.
 * !spellbook - List the spells in your spellbook.
-* !hunt - Hunt for wild animals in the area.
 
 ## Survival
 To survive, you will need to find food and water. Eat food or drink water stored in your inventory with !use <item>. 
