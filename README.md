@@ -20,6 +20,7 @@ A role-playing game for discord which takes place on the continent of Frostica. 
 * !enter - Attempt to enter the area of the map you are in (dungeons, houses, etc).
 * !cast <spell> - Cast a spell in your spellbook.
 * !spellbook - List the spells in your spellbook.
+* !convert - Convert magic ore from your inventory into mana.
 
 ## Survival
 To survive, you will need to find food and water. Eat food or drink water stored in your inventory with !use <item>. 
