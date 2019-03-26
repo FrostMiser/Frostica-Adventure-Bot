@@ -28,9 +28,10 @@ def run_command(message, session):
 def _populate_items(session):
     session.query(Item).delete()
 
+    # ToDo Move this to configuration
     # 1 - 200 mined items
     session.add(Item(id=1, name='magic ore', mine_drop_chance=1))
-    session.add(Item(id=2, name='stone', forage_drop_chance=90, mine_drop_chance=120))
+    session.add(Item(id=2, name='stone', forage_drop_chance=70, mine_drop_chance=120))
     session.add(Item(id=3, name='iron ore', mine_drop_chance=15))
     session.add(Item(id=4, name='gold ore', mine_drop_chance=5))
     session.add(Item(id=5, name='copper ore', mine_drop_chance=10))
@@ -57,7 +58,7 @@ def _populate_items(session):
     session.add(Item(id=25, name='unrefined onyx', mine_drop_chance=2))
 
     # 201 - 400 foraged items
-    session.add(Item(id=201, name='stick', forage_drop_chance=120))
+    session.add(Item(id=201, name='stick', forage_drop_chance=100))
     session.add(Item(id=202, name='strawberry', forage_drop_chance=10, edible=True, hunger_satisfaction=1,
                      thirst_satisfaction=2))
     session.add(Item(id=203, name='grapefruit', forage_drop_chance=4, edible=True, hunger_satisfaction=4,
