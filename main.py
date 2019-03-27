@@ -35,7 +35,7 @@ async def on_message(message):
         response = enter.run_command(message, message_content, session)
     elif command == '!move':
         response = move.run_command(message, message_content, session)
-    elif command == '!cast':
+    elif command == '!cast' or command == '!c':
         response = cast.run_command(message, message_content, session)
     elif command == '!spellbook':
         response = spellbook.run_command(message, message_content, session)
