@@ -2,7 +2,7 @@ from models.player import Player
 from common.helpers import get_session
 
 
-# ToDo Add mana cost and get spells from database. This version of teleport is temporary to help get around the map
+# ToDo Add mana cost and get spells from database.
 def run_command(message, message_content, session):
     spell_name = ' '.join(message_content.split(" ")[1:2]) if len(message_content.split(" ")) > 1 else None
 
@@ -10,6 +10,8 @@ def run_command(message, message_content, session):
         return 'You must say what spell you want to cast with !cast <spell>'
     if spell_name == 'convert':
         response = 'This spell is not yet supported.'
+    # ToDo This version of teleport is temporary to help get around the map. Add a separate admin teleport and limit
+    #      this version to a set number of tiles away from the player's location.
     elif spell_name == 'teleport':
         location_x = ' '.join(message_content.split(" ")[2:3]) if len(message_content.split(" ")) > 2 else None
         location_y = ' '.join(message_content.split(" ")[3:4]) if len(message_content.split(" ")) > 3 else None
