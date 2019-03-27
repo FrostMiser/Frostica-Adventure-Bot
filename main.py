@@ -61,8 +61,6 @@ async def on_message(message):
         response = setup.run_command(message, session)
     elif command == '!equip':
         response = equip.run_command(message, message_content, session)
-    elif command == '!convert':
-        response = setup.run_command(message, message_content, session)
     elif command == '!help':
         response = help.run_command()
     else:
