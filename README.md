@@ -1,8 +1,8 @@
 # Frostica
 A role-playing game for discord which takes place on the continent of Frostica. Explore the land, craft, and survive.
 
-[![Build Status (Master)](https://travis-ci.com/FrostMiser/Frostica.svg?branch=master)](https://travis-ci.com/FrostMiser/Frostica)
-[![Build Status (Development)](https://travis-ci.com/FrostMiser/Frostica.svg?branch=master)](https://travis-ci.com/FrostMiser/Frostica)
+* Status (master): [![Build Status](https://travis-ci.com/FrostMiser/Frostica.svg?branch=master)](https://travis-ci.com/FrostMiser/Frostica)
+* Status (development): [![Build Status](https://travis-ci.com/FrostMiser/Frostica.svg?branch=development)](https://travis-ci.com/FrostMiser/Frostica)
 
 ## Player Commands (somewhat functional)
 * !mine - Mine for stone and minerals in the area.
