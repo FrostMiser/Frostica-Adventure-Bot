@@ -10,7 +10,12 @@ general = {
 player = {
     'starting_x': 1,
     'starting_y': 1,
-    'starting_health': 100
+    'starting_health': 100,
+    'starting_max_health': 100,
+    'starting_thirst': 100,
+    'starting_max_thirst': 100,
+    'starting_mana': 0,
+    'starting_max_mana': 0
 }
 
 

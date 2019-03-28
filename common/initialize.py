@@ -11,9 +11,14 @@ def initialize_player(name, player_id, session):
     if not player:
         player = Player(id=player_id, name=name)
         session.add(player)
-        player.x = settings.player['player_starting_x']
-        player.y = settings.player['player_starting_y']
-        player.health = settings.player['player_starting_health']
+        player.x = settings.player['starting_x']
+        player.y = settings.player['starting_y']
+        player.health = settings.player['starting_health']
+        player.max_health = settings.player['starting_max_health']
+        player.thirst = settings.player['starting_thirst']
+        player.max_thirst = settings.player['starting_max_thirst']
+        player.mana = settings.player['starting_mana']
+        player.max_mana = settings.player['starting_max_mana']
         session.commit()
     return player
 
