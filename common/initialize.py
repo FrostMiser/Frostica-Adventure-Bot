@@ -3,7 +3,7 @@ import json
 from pathlib import Path
 
 from common.world import world
-from configuration import settings  # pylint: disable=import-error
+from configuration import settings  # pylint: disable=no-name-in-module
 from models.player import Player
 
 

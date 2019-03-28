@@ -4,7 +4,7 @@ from models.recipe import Recipe
 from models.recipe_ingredient import RecipeIngredient
 from models.tile import Tile
 
-from configuration import settings  # pylint: disable=import-error
+from configuration import settings  # pylint: disable=no-name-in-module
 
 
 def run_command(message, session):

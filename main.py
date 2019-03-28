@@ -3,7 +3,8 @@ from commands import cast, char, chop, craft, enter, forage, hunt, inv, map as a
     use, setup, equip, help as command_help
 import discord
 
-from configuration import settings  # pylint: disable=import-error
+
+from configuration import settings # pylint: disable=no-name-in-module
 from common.base import Base
 from common.database import db_engine
 from common.initialize import initialize_player, initialize_world
@@ -54,7 +55,7 @@ async def on_message(message):
     elif command == '!use':
         response = use.run_command(message, message_content, session)
     elif command == '!char':
-        response = char.run_command(message, session)
+        response = char.run_command(message.author.id, session)
     elif command == '!inv':
         response = inv.run_command(message, session)
     elif command == '!setup':
