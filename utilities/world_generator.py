@@ -1,5 +1,6 @@
-from PIL import Image
 import json
+
+from PIL import Image
 
 
 # Reads an image and translates it to a world map in world.json
@@ -9,7 +10,8 @@ def generate_world():
     pixels = list(map_image.getdata())
     row = []
     world = []
-    for index, pixel in enumerate(pixels):
+    for pixel_enum in enumerate(pixels):
+        pixel = pixel_enum[1]
         pixel_total = pixel[0]+pixel[1]+pixel[2]
         if pixel_total <= 50:
             output = 2

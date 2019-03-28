@@ -1,5 +1,3 @@
-from common.database import db_engine
-from models.player import Player
 from models.tile import Tile
 
 # TILE REFERENCE
@@ -12,7 +10,7 @@ from models.tile import Tile
 world = {
     'x': 0,
     'y': 0,
-    'tiles': None
+    'tiles': []
 }
 
 
@@ -23,13 +21,13 @@ def get_tile_id(x, y):
         try:
             world_y = world['tiles'][y]
             tile_id = world_y[x]
-        except (ValueError, IndexError, KeyError) as e:
+        except (ValueError, IndexError, KeyError):
             tile_id = -1
     return tile_id
 
 
-def get_tile(id, session):
-    return session.query(Tile).get(id)
+def get_tile(tile_id, session):
+    return session.query(Tile).get(tile_id)
 
 
 def get_tile_from(x, y, session):

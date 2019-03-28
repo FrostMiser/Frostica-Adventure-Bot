@@ -140,5 +140,3 @@ def _populate_recipes(session):
                                               item_amount=4)
     session.add(basic_axe_ingredient_2)
     session.commit()
-    return
-

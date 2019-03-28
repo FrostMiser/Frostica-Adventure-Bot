@@ -1,5 +1,4 @@
 from models.player import Player
-from common.helpers import get_session
 
 
 # ToDo Add mana cost and get spells from database.

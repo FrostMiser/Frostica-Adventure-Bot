@@ -1,3 +1,13 @@
+"""
+This file contains helpers for making it easier to get data and do other things.
+
+Function Naming:
+    get_something() - Lookup something by it's name
+    get_something_by_specifier() - Lookup by something other than name
+
+    If the something portion is pluralized, it is expected that the function can return multiple values
+"""
+
 import re
 
 from sqlalchemy.orm import sessionmaker
@@ -5,16 +15,6 @@ from sqlalchemy.orm import sessionmaker
 from common.database import db_engine
 from models.item import Item
 from models.player_inventory import PlayerInventory
-
-'''
-This file contains helpers for making it easier to get data and do other things.
-
-Function Naming:
-    get_something() - Lookup something by it's name
-    get_something_by_specifier() - Lookup by something other than name
-    
-    If the something portion is pluralized, it is expected that the function can return multiple values
-'''
 
 
 def get_session():
@@ -60,7 +60,7 @@ def complete_command(player, session):
             else:
                 message = '{} died of hunger️r'.format(player.name)
             message_dashes = re.sub('.', '-', message)
-            response = '\n☠️\n`{}`\n`{}`\n`{}`\n☠️\n'.format(message_dashes, message, message_dashes)
+            response = '\n☠️\n`{message_dashes}`\n`{message}`\n`{message_dashes}`\n☠️\n'.format(message_dashes=message_dashes, message=message)
             _reset_player(player, session)
     return response
 

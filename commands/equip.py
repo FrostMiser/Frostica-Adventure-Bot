@@ -1,4 +1,4 @@
-from common.helpers import get_session, get_item_by_name
+from common.helpers import  get_item_by_name
 from models.player import Player
 from models.player_inventory import PlayerInventory
 

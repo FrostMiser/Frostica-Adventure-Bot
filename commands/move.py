@@ -1,6 +1,6 @@
+from common.helpers import drain_player_hunger_and_thirst, get_hunger_and_thirst_warnings
 from common.world import get_tile, get_tile_id, get_tile_from
 from models.player import Player
-from common.helpers import drain_player_hunger_and_thirst, get_hunger_and_thirst_warnings
 
 
 def _move(player, session, x=0, y=0):
@@ -28,9 +28,8 @@ direction_dict = {
 def _move_direction(player, session, direction):
     if _move(player, session, *direction_dict[direction]):
         return f"you move {direction}\n"
-    else:
-        x, y = direction_dict[direction]
-        return f"you can't traverse (move over) {get_tile_from(player.x + x, player.y + y, session).name}\n"
+    x, y = direction_dict[direction]
+    return f"you can't traverse (move over) {get_tile_from(player.x + x, player.y + y, session).name}\n"
 
 
 def run_command(message, message_content, session):

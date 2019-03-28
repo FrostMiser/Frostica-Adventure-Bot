@@ -32,13 +32,13 @@ async def on_message(message):
     if command == '!map':
         response = area_map.run_command(message, session)
     elif command == '!enter':
-        response = enter.run_command(message, message_content, session)
+        response = enter.run_command()
     elif command == '!move':
         response = move.run_command(message, message_content, session)
     elif command == '!cast' or command == '!c':
         response = cast.run_command(message, message_content, session)
     elif command == '!spellbook':
-        response = spellbook.run_command(message, message_content, session)
+        response = spellbook.run_command()
     elif command == '!forage':
         response = forage.run_command(message, session)
     elif command == '!mine':

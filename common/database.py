@@ -1,3 +1,4 @@
+"""This is the global database engine"""
 from sqlalchemy import create_engine
 
 from configuration import settings

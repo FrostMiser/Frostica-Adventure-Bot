@@ -1,3 +1,3 @@
-def run_command(message, message_content, sessoin):
+def run_command():
     response = 'This command is not yet supported.'
     return response

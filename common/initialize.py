@@ -1,9 +1,10 @@
-from models.player import Player
-from common.world import world
-from configuration import settings
-
+"""Initialization of the game data"""
 import json
 from pathlib import Path
+
+from common.world import world
+from configuration import settings
+from models.player import Player
 
 
 def initialize_player(name, player_id, session):
