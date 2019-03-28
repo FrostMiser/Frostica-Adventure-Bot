@@ -1,6 +1,6 @@
 """This is the main module which runs this application"""
 from commands import cast, char, chop, craft, enter, forage, hunt, inv, map as area_map, mine, move, recipes, spellbook, \
-    use, setup, equip, help
+    use, setup, equip, help as command_help
 import discord
 
 from configuration import settings
@@ -35,7 +35,7 @@ async def on_message(message):
         response = enter.run_command()
     elif command == '!move':
         response = move.run_command(message, message_content, session)
-    elif command == '!cast' or command == '!c':
+    elif command in ['!cast', '!c']:
         response = cast.run_command(message, message_content, session)
     elif command == '!spellbook':
         response = spellbook.run_command()
@@ -48,7 +48,7 @@ async def on_message(message):
     elif command == '!hunt':
         response = hunt.run_command(message, session)
     elif command == '!craft':
-        response = craft.run_command(message, message_content, session)
+        response = craft.run_command(message, message_content)
     elif command == '!recipes':
         response = recipes.run_command(message_content, session)
     elif command == '!use':
@@ -62,7 +62,7 @@ async def on_message(message):
     elif command == '!equip':
         response = equip.run_command(message, message_content, session)
     elif command == '!help':
-        response = help.run_command()
+        response = command_help.run_command()
     else:
         response = "Unknown command."
 
