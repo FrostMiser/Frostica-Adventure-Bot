@@ -47,3 +47,15 @@ hunger and thirst differently.
 * Temperatures, time of day, seasons
 * Set a maximum inventory size and add ways to upgrade the size (bags, increase base size).
 * Quests
+* Spells
+   - convert: Convert magic ore to mana.
+   - teleport: Teleport up to 10 tiles away.
+   - summon-food: Summons some food.
+   - summon-water: Summons some water.
+   - health-boost: Increases the players maximum health (temporarily or permanent)
+   - mana-boost: Increases the players maximum mana (temporarily or permanent)
+   - increase-hunger-capacity: Increases the players maximum hunger (temporarily or permanent)
+   - increase-thirst-capacity: Increases the players maximum thirst (temporarily or permanent)
+   - regenerate-health: Causes the players health to regenerate over time.
+   - heal: Heals some of the players health.
+   - grow-tree: Grows trees in the tile the player is standing in.
