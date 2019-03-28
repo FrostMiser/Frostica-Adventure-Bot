@@ -15,12 +15,16 @@ from sqlalchemy.orm import sessionmaker
 from common.database import db_engine
 from models.item import Item
 from models.player_inventory import PlayerInventory
-
+from models.player import Player
 
 def get_session():
     session_maker = sessionmaker(bind=db_engine)
     session = session_maker()
     return session
+
+
+def get_player(session, player_id):
+    return session.query(Player).get(player_id)
 
 
 def get_item_by_name(name, session):

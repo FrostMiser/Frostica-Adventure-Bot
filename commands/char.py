@@ -1,8 +1,8 @@
-from models.player import Player
+from common.helpers import get_player
 
 
 def run_command(message, session):
-    player = session.query(Player).filter(Player.id == message.author.id).first()
+    player = get_player(session, message.author.id)
     response = '__{}__'.format(player.name)
     response += '\n:heart: Health: {}%'.format(round((player.health/player.max_health)*100))
     if player.max_mana > 0:
