@@ -5,7 +5,6 @@ from sqlalchemy.orm import sessionmaker
 from common.database import db_engine
 from models.item import Item
 from models.player_inventory import PlayerInventory
-from models.player import Player
 
 '''
 This file contains helpers for making it easier to get data and do other things.
@@ -31,12 +30,12 @@ def get_item_by_name(name, session):
 
 def drain_player_hunger_and_thirst(player, hunger_amount=1, thirst_amount=1):
     if player.hunger > 0:
-        player.hunger = max(player.hunger-hunger_amount, 0)
+        player.hunger = max(player.hunger - hunger_amount, 0)
     else:
         if player.health > 0:
             player.health -= 1
     if player.thirst > 0:
-        player.thirst = max(player.thirst-thirst_amount, 0)
+        player.thirst = max(player.thirst - thirst_amount, 0)
     else:
         if player.health > 0:
             player.health -= 1
