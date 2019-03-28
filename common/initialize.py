@@ -27,7 +27,15 @@ def initialize_world():
     if not world['tiles']:
         world_file_path = Path(__file__).resolve().parent.parent.joinpath('configuration', 'world.json')
         if world_file_path.exists():
-            world_file = open(world_file_path, 'r')
-            world['tiles'] = json.loads(world_file.read())
+            _load_world(world_file_path)
         else:
-            raise Exception('World file not found. Check /configuration/world.json')
+            world_file_path = Path(__file__).resolve().parent.parent.joinpath('configuration', 'default_world.json')
+            if world_file_path.exists():
+                _load_world(world_file_path)
+            else:
+                raise Exception('World file not found. Check /configuration/world.json')
+
+
+def _load_world(world_file_path):
+    world_file = open(world_file_path, 'r')
+    world['tiles'] = json.loads(world_file.read())
