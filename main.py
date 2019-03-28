@@ -72,4 +72,4 @@ async def on_message(message):
     if response:
         await client.send_message(message.channel, response)
 
-client.run(settings.settings['api_token'])
+client.run(settings.general['api_token'])

@@ -8,7 +8,7 @@ from configuration import settings
 
 
 def run_command(message, session):
-    if message.author.id not in settings.settings['owners']:
+    if message.author.id not in settings.general['owners']:
         response = 'You are not an owner.'
     else:
         _populate_items(session)
