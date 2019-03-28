@@ -1,8 +1,8 @@
 from common.helpers import get_player
 
 
-def run_command(message, session):
-    player = get_player(session, message.author.id)
+def run_command(player_id, session):
+    player = get_player(session, player_id)
     response = '__{}__'.format(player.name)
     response += '\n:heart: Health: {}%'.format(round((player.health/player.max_health)*100))
     if player.max_mana > 0:
