@@ -1,5 +1,5 @@
 # Frostica
-A role-playing game for discord which takes place on the continent of Frostica. Explore the land, craft, and survive.
+A role-playing game for discord which takes place on the continent of Frostica. Explore the land, craft, and survive. Overall, its a game about survival and does not follow the traditional RPG path of things such as treasure chests, monsters, shops, NPCs, etc. It's more about surviving in the land and crafting the things you need.
 
 * Status (master): [![Build Status](https://travis-ci.com/FrostMiser/Frostica.svg?branch=master)](https://travis-ci.com/FrostMiser/Frostica)
 * Status (development): [![Build Status](https://travis-ci.com/FrostMiser/Frostica.svg?branch=development)](https://travis-ci.com/FrostMiser/Frostica)
@@ -47,6 +47,7 @@ hunger and thirst differently.
 * Temperatures, time of day, seasons
 * Set a maximum inventory size and add ways to upgrade the size (bags, increase base size).
 * Quests
+* Spell Difficulty. Different spells are more or less difficult to cast.
 * Spells
    - convert: Convert magic ore to mana.
    - teleport: Teleport up to 10 tiles away.
@@ -59,3 +60,5 @@ hunger and thirst differently.
    - regenerate-health: Causes the players health to regenerate over time.
    - heal: Heals some of the players health.
    - grow-tree: Grows trees in the tile the player is standing in.
+ 
+ 
