@@ -1,4 +1,3 @@
-from models.player import Player
 from common.helpers import get_player
 
 
