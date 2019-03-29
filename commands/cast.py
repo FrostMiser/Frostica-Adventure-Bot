@@ -13,13 +13,16 @@ def run_command(message, message_content, session):
         for player_inventory_item in player.inventory:
             if player_inventory_item.item.name == 'magic ore':
                 if player.mana+player_inventory_item.item_amount <= player.max_mana:
-                    player.mana = player.mana + player_inventory_item.item_amount
+                    amount = player_inventory_item.item_amount
+                    player.mana = player.mana + amount
                     session.delete(player_inventory_item)
                 else:
-                    player.mana = player.mana + player_inventory_item.item_amount
-                    player_inventory_item.item_amount = player_inventory_item.item_amount - player.mana
+                    amount = player.mana + player_inventory_item.item_amount - player.max_mana
+                    player.mana = player.mana + amount
+                    player_inventory_item.item_amount = player_inventory_item.item_amount - amount
+
                 # ToDo show how much magic ore was converted
-                response = 'You convert magic ore into mana.'
+                response = 'You convert {} magic ore into mana.'.format(amount)
         if not response:
             response = 'You do not have any magic ore to convert.'
     # ToDo This version of teleport is temporary to help get around the map. Add a separate admin teleport and limit

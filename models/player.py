@@ -18,7 +18,7 @@ class Player(Base):
     max_thirst = Column(Integer, default=100)
     mana = Column(Integer, default=0)
     max_health = Column(Integer, default=100)
-    max_mana = Column(Integer, default=0)
+    max_mana = Column(Integer, default=100)
     max_inventory_size = Column(Integer)
     inventory = relationship('models.player_inventory.PlayerInventory')
     dimension = Column(String, default='overworld')
