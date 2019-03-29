@@ -70,18 +70,26 @@ def _populate_items(session):
                      thirst_satisfaction=3))
     session.add(Item(id=211, name='carrot', forage_drop_chance=10, edible=True, hunger_satisfaction=2))
     session.add(Item(id=212, name='broccoli', forage_drop_chance=5, edible=True, hunger_satisfaction=7))
-    session.add(Item(id=213, name='spinach', forage_drop_chance=2, edible=True, hunger_satisfaction=1))
+    session.add(Item(id=213, name='spinach', forage_drop_chance=5, edible=True, hunger_satisfaction=1))
     session.add(Item(id=214, name='cauliflower', forage_drop_chance=1, edible=True, hunger_satisfaction=9))
     session.add(Item(id=215, name='radish', forage_drop_chance=2, edible=True, hunger_satisfaction=9))
     session.add(Item(id=216, name='lemon', forage_drop_chance=2, edible=True, hunger_satisfaction=2,
                      thirst_satisfaction=1))
     session.add(Item(id=217, name='watermelon', forage_drop_chance=1, edible=True, hunger_satisfaction=5,
                      thirst_satisfaction=15))
+    session.add(Item(id=218, name='lettuce', forage_drop_chance=5, edible=True, hunger_satisfaction=1,
+                     thirst_satisfaction=2))
+    session.add(Item(id=219, name='salad', edible=True, hunger_satisfaction=15,
+                     thirst_satisfaction=30))
+
     # 401 - 600 hunting items
-    session.add(Item(id=401, name='rat', hunt_drop_chance=100, chop_drop_chance=1))
-    session.add(Item(id=402, name='chicken', hunt_drop_chance=5))
-    session.add(Item(id=403, name='boar', hunt_drop_chance=1))
-    session.add(Item(id=404, name='turkey', hunt_drop_chance=1))
+    session.add(Item(id=401, name='rat meat', hunt_drop_chance=100, chop_drop_chance=1))
+    session.add(Item(id=402, name='rat fur', hunt_drop_chance=100, chop_drop_chance=1))
+    session.add(Item(id=403, name='chicken meat', hunt_drop_chance=5))
+    session.add(Item(id=404, name='feather', hunt_drop_chance=5))
+    session.add(Item(id=405, name='boar meat', hunt_drop_chance=1))
+    session.add(Item(id=406, name='boar hide', hunt_drop_chance=1))
+    session.add(Item(id=407, name='turkey meat', hunt_drop_chance=1))
 
     # 601 - 800 wood chopping items
     session.add(Item(id=601, name='wood', chop_drop_chance=100))
@@ -153,5 +161,24 @@ def _populate_recipes(session):
                                                         item=get_item_by_name('stick', session),
                                                         item_amount=2)
     session.add(basic_hunting_knife_ingredient_2)
+
+    # Salad
+    salad = Recipe(id=4, name='salad',
+                   item=get_item_by_name('salad', session))
+    session.add(salad)
+
+    salad_ingredient_1 = RecipeIngredient(recipe_id=salad.id,
+                                          item=get_item_by_name('lettuce', session),
+                                          item_amount=4)
+    session.add(salad_ingredient_1)
+    salad_ingredient_2 = RecipeIngredient(recipe_id=salad.id,
+                                          item=get_item_by_name('spinach', session),
+                                          item_amount=2)
+    session.add(salad_ingredient_2)
+
+    salad_ingredient_3 = RecipeIngredient(recipe_id=salad.id,
+                                          item=get_item_by_name('carrot', session),
+                                          item_amount=1)
+    session.add(salad_ingredient_3)
 
     session.commit()
