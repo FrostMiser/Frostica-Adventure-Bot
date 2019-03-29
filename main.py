@@ -2,7 +2,7 @@
 import discord
 
 from commands import cast, char, chop, craft, enter, forage, hunt, inv, map as area_map, mine, move, recipes, spellbook, \
-    use, setup, equip, help as command_help
+    use, setup, equip, help as command_help  # pylint: disable=wrong-import-order
 from common.base import Base
 from common.database import db_engine
 from common.helpers import get_session, complete_command
