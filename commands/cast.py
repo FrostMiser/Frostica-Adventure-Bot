@@ -1,4 +1,5 @@
 from models.player import Player
+from common.helpers import get_player
 
 
 # ToDo Add mana cost and get spells from database.
@@ -7,8 +8,18 @@ def run_command(message, message_content, session):
 
     if not spell_name:
         return 'You must say what spell you want to cast with !cast <spell>'
+
+    player = get_player(message.author.id, session)
     if spell_name == 'convert':
-        response = 'This spell is not yet supported.'
+        for player_inventory_item in player.inventory:
+            if player_inventory_item.item.name == 'magic ore':
+                if player.mana+player_inventory_item.item_amount <= player.max_mana:
+                    player.mana = player.mana + player_inventory_item.item_amount
+                    session.delete(player_inventory_item)
+                else:
+                    player.mana = player.mana + player_inventory_item.item_amount
+                    player_inventory_item.item_amount = player_inventory_item.item_amount - player.mana
+                response = 'You convert magic ore into mana.'
     # ToDo This version of teleport is temporary to help get around the map. Add a separate admin teleport and limit
     #      this version to a set number of tiles away from the player's location.
     elif spell_name == 'teleport':
@@ -16,7 +27,6 @@ def run_command(message, message_content, session):
         location_y = ' '.join(message_content.split(" ")[3:4]) if len(message_content.split(" ")) > 3 else None
         if location_x and location_y and location_x.isnumeric() and location_y.isnumeric() \
                 and 0 <= int(location_x) < 10000 and 0 <= int(location_y) < 10000:
-            player = session.query(Player).filter(Player.id == message.author.id).first()
             player.x = location_x
             player.y = location_y
             response = 'You have teleported to {} {}.'.format(location_x, location_y)
