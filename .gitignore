@@ -2,5 +2,6 @@
 settings.py
 *__pycache__*
 *.db
+*.db-journal
 world.json
 utilities/*.png
