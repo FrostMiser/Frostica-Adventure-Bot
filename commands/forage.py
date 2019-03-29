@@ -28,6 +28,6 @@ def run_command(message, session):
             player_inventory.item_amount += 1
         else:
             player.inventory.append(PlayerInventory(player_id=player.id, item_id=foraged_item.id, item_amount=1))
-        response = '{} went foraging and found a {}'.format(player.name, foraged_item.name)
+        response = ':mag_right: {} went foraging and found a {}'.format(player.name, foraged_item.name)
         response += get_hunger_and_thirst_warnings(player)
     return response
