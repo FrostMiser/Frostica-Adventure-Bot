@@ -12,7 +12,7 @@ def run_command(message, message_content, session):
     if spell_name == 'convert':
         for player_inventory_item in player.inventory:
             if player_inventory_item.item.name == 'magic ore':
-                if player.mana+player_inventory_item.item_amount <= player.max_mana:
+                if player.mana + player_inventory_item.item_amount <= player.max_mana:
                     amount = player_inventory_item.item_amount
                     player.mana = player.mana + amount
                     session.delete(player_inventory_item)
