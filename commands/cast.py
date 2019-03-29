@@ -19,6 +19,7 @@ def run_command(message, message_content, session):
                 else:
                     player.mana = player.mana + player_inventory_item.item_amount
                     player_inventory_item.item_amount = player_inventory_item.item_amount - player.mana
+                # ToDo show how much magic ore was converted
                 response = 'You convert magic ore into mana.'
         if not response:
             response = 'You do not have any magic ore to convert.'
