@@ -8,8 +8,8 @@ def run_command(message, message_content, session):
 
     if not spell_name:
         return 'You must say what spell you want to cast with !cast <spell>'
-
-    player = get_player(message.author.id, session)
+    response = None
+    player = get_player(session, message.author.id)
     if spell_name == 'convert':
         for player_inventory_item in player.inventory:
             if player_inventory_item.item.name == 'magic ore':
@@ -20,6 +20,8 @@ def run_command(message, message_content, session):
                     player.mana = player.mana + player_inventory_item.item_amount
                     player_inventory_item.item_amount = player_inventory_item.item_amount - player.mana
                 response = 'You convert magic ore into mana.'
+        if not response:
+            response = 'You do not have any magic ore to convert.'
     # ToDo This version of teleport is temporary to help get around the map. Add a separate admin teleport and limit
     #      this version to a set number of tiles away from the player's location.
     elif spell_name == 'teleport':
