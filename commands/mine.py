@@ -23,7 +23,8 @@ def run_command(message, session):
         mined_item_id = random.choices(list(possible_items.keys()), possible_items.values())[0]
         mined_item = session.query(Item).filter(Item.id == mined_item_id).first()
 
-        player_inventory = session.query(PlayerInventory).filter(PlayerInventory.item_id == mined_item.id).first()
+        player_inventory = session.query(PlayerInventory).filter(PlayerInventory.player_id == message.author.id,
+                                                                 PlayerInventory.item_id == mined_item.id).first()
         drain_player_hunger_and_thirst(player)
 
         if player_inventory:

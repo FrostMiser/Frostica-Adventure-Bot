@@ -20,8 +20,9 @@ def run_command(message, session):
         foraged_item_id = random.choices(list(possible_items.keys()), possible_items.values())[0]
         foraged_item = session.query(Item).filter(Item.id == foraged_item_id).first()
 
-        player_inventory = session.query(PlayerInventory).filter(PlayerInventory.item_id == foraged_item.id).first()
         drain_player_hunger_and_thirst(player)
+        player_inventory = session.query(PlayerInventory).filter(PlayerInventory.player_id == message.author.id,
+                                                                 PlayerInventory.item_id == foraged_item.id).first()
 
         if player_inventory:
             player_inventory.item_amount += 1
