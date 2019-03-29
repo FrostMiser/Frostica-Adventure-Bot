@@ -6,8 +6,12 @@ from models.player_inventory import PlayerInventory
 from common.world import get_tile_from
 from common.helpers import drain_player_hunger_and_thirst, get_hunger_and_thirst_warnings
 
+
 def run_command(message, session):
     player = session.query(Player).filter(Player.id == message.author.id).first()
+
+    if not player.main_hand_item or not player.main_hand_item.can_mine:
+        return 'You don\'t have anything equipped that you can mine with.'
 
     tile = get_tile_from(player.x, player.y, session)
     if not tile.can_mine:

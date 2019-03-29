@@ -87,9 +87,9 @@ def _populate_items(session):
     session.add(Item(id=601, name='wood', chop_drop_chance=100))
 
     # 801 - 1200 crafted items, tools, armor, etc
-    session.add(Item(id=801, name='basic pickaxe', equipable=True))
-    session.add(Item(id=802, name='basic axe', equipable=True))
-    session.add(Item(id=803, name='basic hunting knife', equipable=True))
+    session.add(Item(id=801, name='basic pickaxe', equipable=True, can_mine=True))
+    session.add(Item(id=802, name='basic axe', equipable=True, can_chop=True))
+    session.add(Item(id=803, name='basic hunting knife', equipable=True, can_hunt=True))
     session.commit()
 
 

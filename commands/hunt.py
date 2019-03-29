@@ -9,6 +9,9 @@ from common.helpers import drain_player_hunger_and_thirst, get_hunger_and_thirst
 def run_command(message, session):
     player = session.query(Player).filter(Player.id == message.author.id).first()
 
+    if not player.main_hand_item or not player.main_hand_item.can_hunt:
+        return 'You don\'t have anything equipped that you can hunt with.'
+
     tile = get_tile_from(player.x, player.y, session)
     if not tile.can_hunt:
         response = 'You didn\'t find anything here, maybe try somewhere else.'
