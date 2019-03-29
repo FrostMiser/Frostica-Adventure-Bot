@@ -1,14 +1,13 @@
 """This is the main module which runs this application"""
-from commands import cast, char, chop, craft, enter, forage, hunt, inv, map as area_map, mine, move, recipes, spellbook, \
-    use, setup, equip, help as command_help
 import discord
 
-
-from configuration import settings # pylint: disable=no-name-in-module
+from commands import cast, char, chop, craft, enter, forage, hunt, inv, map as area_map, mine, move, recipes, spellbook, \
+    use, setup, equip, help as command_help
 from common.base import Base
 from common.database import db_engine
-from common.initialize import initialize_player, initialize_world
 from common.helpers import get_session, complete_command
+from common.initialize import initialize_player, initialize_world
+from configuration import settings  # pylint: disable=no-name-in-module
 
 client = discord.Client()
 Base.metadata.create_all(db_engine)
@@ -72,5 +71,6 @@ async def on_message(message):
 
     if response:
         await client.send_message(message.channel, response)
+
 
 client.run(settings.general['api_token'])
