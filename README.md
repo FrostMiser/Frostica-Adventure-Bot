@@ -55,9 +55,9 @@ hunger and thirst differently.
    - summon-water: Summons some water.
    - health-boost: Increases the players maximum health (temporarily or permanent)
    - mana-boost: Increases the players maximum mana (temporarily or permanent)
-   - increase-hunger-capacity: Increases the players maximum hunger (temporarily or permanent)
-   - increase-thirst-capacity: Increases the players maximum thirst (temporarily or permanent)
-   - regenerate-health: Causes the players health to regenerate over time.
+   - hunger-boost: Increases the players maximum hunger (temporarily or permanent)
+   - thirst-boost: Increases the players maximum thirst (temporarily or permanent)
+   - regenerate: Causes the players health to regenerate over time.
    - heal: Heals some of the players health.
    - grow-tree: Grows trees in the tile the player is standing in.
  
