@@ -3,7 +3,7 @@
 general = {
     'database_engine': 'sqlite:///path/to/database.db',
     'api_token': 'example',
-    'owners': ['the id of the owner', 'another owner id']
+    'admins': ['id of the admin', 'another admin id']
 }
 
 player = {
