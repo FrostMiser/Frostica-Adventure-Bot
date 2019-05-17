@@ -7,8 +7,8 @@ from models.tile import Tile
 
 
 def run_command(message, session):
-    if message.author.id not in settings.general['owners']:
-        response = 'You are not an owner.'
+    if message.author.id not in settings.general['admins']:
+        response = 'You must be an admin to use this command.'
     else:
         _populate_items(session)
         _populate_tiles(session)
