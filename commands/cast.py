@@ -30,13 +30,17 @@ def run_command(message, message_content, session):
     elif spell_name == 'teleport':
         location_x = ' '.join(message_content.split(" ")[2:3]) if len(message_content.split(" ")) > 2 else None
         location_y = ' '.join(message_content.split(" ")[3:4]) if len(message_content.split(" ")) > 3 else None
-        if location_x and location_y and location_x.isnumeric() and location_y.isnumeric() \
-                and 0 <= int(location_x) < 10000 and 0 <= int(location_y) < 10000:
-            player.x = location_x
-            player.y = location_y
-            response = 'You have teleported to {} {}.'.format(location_x, location_y)
+        # ToDo Allow admins to teleport larger distances
+        if location_x > 10 or location_y > 10:
+            response = 'You may only teleport up to 10 tiles from your current location.'
         else:
-            response = 'You must say where you want to teleport to with !cast teleport x y.'
+            if location_x and location_y and location_x.isnumeric() and location_y.isnumeric() \
+                    and 0 <= int(location_x) < 10000 and 0 <= int(location_y) < 10000:
+                player.x = location_x
+                player.y = location_y
+                response = 'You have teleported to {} {}.'.format(location_x, location_y)
+            else:
+                response = 'You must say where you want to teleport to with !cast teleport x y.'
     else:
         response = 'That is not a spell you know.'
     return response
