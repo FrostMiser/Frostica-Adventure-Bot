@@ -14,14 +14,14 @@ def generate_world():
         pixel = pixel_enum[1]
         pixel_total = pixel[0] + pixel[1] + pixel[2]
         if pixel_total <= 50:
-            output = 2
+            output = 2  # Water
         elif 51 <= pixel_total <= 400:
             if 300 < pixel_total < 350:
-                output = 3
+                output = 3  # Trees
             else:
-                output = 1
+                output = 1  # Flat snow
         elif 400 <= pixel_total < 550:
-            output = 4
+            output = 4  # Mountains
         else:
             output = 0
         row.append(output)
