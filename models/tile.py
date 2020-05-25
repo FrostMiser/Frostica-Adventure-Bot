@@ -9,7 +9,6 @@ class Tile(Base):
     id = Column(Integer, primary_key=True)
     name = Column(String)
     display_emoji = Column(String)
-    emoji_name = Column(String)
     interactive = Column(Boolean, default=False)
     traversable = Column(Boolean, default=True)
     hunger_drain_amount = Column(Integer, default=0)

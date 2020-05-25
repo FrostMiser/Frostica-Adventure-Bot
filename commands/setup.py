@@ -106,17 +106,17 @@ def _populate_tiles(session):
 
     # This tile shouldn't exist normally, the ID for this tile is set for parts of the world without a tile in
     # common.world.get_tile_id
-    session.add(Tile(id=-1, name='barrier', emoji_name='no_entry_sign', display_emoji='🚫', traversable=False))
+    session.add(Tile(id=-1, name='barrier', display_emoji='🚫', traversable=False))
 
     # All other tiles for the world
-    session.add(Tile(id=0, name='snow covered mountains', emoji_name='mount_fuji', display_emoji='🗻', can_hunt=True,
+    session.add(Tile(id=0, name='snow covered mountains', display_emoji='🗻', can_hunt=True,
                      can_mine=True, hunger_drain_amount=15, thirst_drain_amount=15))
-    session.add(Tile(id=1, name='flat snow', emoji_name='white_large_square', display_emoji='⬜', can_hunt=True,
+    session.add(Tile(id=1, name='flat snow', display_emoji='⬜', can_hunt=True,
                      hunger_drain_amount=1, thirst_drain_amount=2))
-    session.add(Tile(id=2, name='water', emoji_name='large_blue_diamond', display_emoji='🔷', traversable=False))
-    session.add(Tile(id=3, name='trees', emoji_name='evergreen_tree', display_emoji='🌲', can_chop=True,
+    session.add(Tile(id=2, name='water', display_emoji='🔷', traversable=False))
+    session.add(Tile(id=3, name='trees', display_emoji='🌲', can_chop=True,
                      can_forage=True, can_hunt=True, hunger_drain_amount=1, thirst_drain_amount=1))
-    session.add(Tile(id=4, name='mountains', emoji_name='mountain', display_emoji='⛰️', can_hunt=True, can_mine=True,
+    session.add(Tile(id=4, name='mountains', display_emoji='⛰️', can_hunt=True, can_mine=True,
                      hunger_drain_amount=10, thirst_drain_amount=10))
     session.commit()
 
