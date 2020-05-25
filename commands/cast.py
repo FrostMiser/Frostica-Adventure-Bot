@@ -1,4 +1,5 @@
 from common.helpers import get_player
+from configuration import settings  # pylint: disable=no-name-in-module
 
 
 # ToDo Add mana cost and get spells from database.
@@ -35,26 +36,28 @@ def run_command(message, message_content, session):
             player.mana = player.mana - cost
             player.health = max(player.health+10, player.max_health)
             response = 'You cast a spell and heal yourself.'
-    # ToDo This version of teleport is temporary to help get around the map. Add a separate admin teleport and limit
-    #      this version to a set number of tiles away from the player's location.
+    # ToDo Do not allow teleporting outside of the map
     elif spell_name == 'teleport':
         cost = 15
-        location_x = ' '.join(message_content.split(" ")[2:3]) if len(message_content.split(" ")) > 2 else None
-        location_y = ' '.join(message_content.split(" ")[3:4]) if len(message_content.split(" ")) > 3 else None
-        # ToDo Allow admins to teleport larger distances
+        try:
+            location_x = int(' '.join(message_content.split(" ")[2:3])) if len(message_content.split(" ")) > 2 else None
+            location_y = int(' '.join(message_content.split(" ")[3:4])) if len(message_content.split(" ")) > 3 else None
+        except ValueError:
+            return 'You must say where you want to teleport to with !cast teleport distance_x distance_y.'
+
         if player.mana - cost < 0:
             response = 'You do not have enough mana to cast this spell.'
-        elif location_x > 10 or location_y > 10:
+        elif (int(location_x) > 10 or int(location_y) > 10) and \
+                message.author.id not in settings.general['admins']:  # ToDo Allow admins to teleport larger distances
             response = 'You may only teleport up to 10 tiles from your current location.'
         else:
             player.mana = player.mana - cost
-            if location_x and location_y and location_x.isnumeric() and location_y.isnumeric() \
-                    and 0 <= int(location_x) < 10000 and 0 <= int(location_y) < 10000:
-                player.x = location_x
-                player.y = location_y
-                response = 'You have teleported to {} {}.'.format(location_x, location_y)
+            if location_x and location_y and int(location_x) < 10000 and int(location_y) < 10000:
+                player.x = player.x + int(location_x)
+                player.y = player.y + int(location_y)
+                response = 'You have teleported to {} {}.'.format(player.x, player.y)
             else:
-                response = 'You must say where you want to teleport to with !cast teleport x y.'
+                response = 'You must say where you want to teleport to with !cast teleport distance_x distance_y.'
     else:
         response = 'That is not a spell you know.'
     return response

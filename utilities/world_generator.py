@@ -29,7 +29,7 @@ def generate_world():
             world.append(row)
             row = []
 
-    output = open('../world.json', 'w')
+    output = open('../configuration/world.json', 'w')
     json.dumps(world)
     output.write(world.__str__())
     print('Finished generating world.json file.')
