@@ -2,7 +2,6 @@
 A role-playing game for discord which takes place on the continent of Frostica. Explore the land, craft, and survive. Overall, its a game about survival and does not follow the traditional RPG path of things such as treasure chests, monsters, shops, NPCs, etc. It's more about surviving in the land and crafting the things you need.
 
 * Status (master): [![Build Status](https://travis-ci.com/FrostMiser/Frostica.svg?branch=master)](https://travis-ci.com/FrostMiser/Frostica)
-* Status (development): [![Build Status](https://travis-ci.com/FrostMiser/Frostica.svg?branch=development)](https://travis-ci.com/FrostMiser/Frostica)
 
 ## Player Commands (somewhat functional)
 * !mine - Mine for stone and minerals in the area.
