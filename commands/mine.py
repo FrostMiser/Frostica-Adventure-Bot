@@ -25,7 +25,7 @@ def run_command(message, session):
 
         player_inventory = session.query(PlayerInventory).filter(PlayerInventory.player_id == message.author.id,
                                                                  PlayerInventory.item_id == mined_item.id).first()
-        drain_player_hunger_and_thirst(player)
+        drain_player_hunger_and_thirst(player, hunger_amount=10, thirst_amount=10)
 
         if player_inventory:
             player_inventory.item_amount += 1
