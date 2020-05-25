@@ -10,6 +10,7 @@ from configuration import settings  # pylint: disable=no-name-in-module
 
 
 client = discord.Client()
+channel = discord.channel
 Base.metadata.create_all(db_engine)
 
 
@@ -70,7 +71,7 @@ async def on_message(message):
     session.commit()
 
     if response:
-        await client.send_message(message.channel, response)
+        await message.channel.send(response)
 
 
 client.run(settings.general['api_token'])
