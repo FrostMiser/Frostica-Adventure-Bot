@@ -40,7 +40,7 @@ def run_command(message, message_content, session):
     if direction in direction_dict:
         response = _move_direction(player, session, direction)
     else:
-        return ("You must say which direction you want to use with !use <direction>.\n"
+        return ("You must say which direction you want to use with !move <direction>.\n"
                 "valid directions are north, east, south, and west.")
 
     current_tile_id = get_tile_id(player.x, player.y)
