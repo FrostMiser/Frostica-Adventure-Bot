@@ -57,7 +57,6 @@ hunger and thirst differently.
    - hunger-boost: Increases the players maximum hunger (temporarily or permanent)
    - thirst-boost: Increases the players maximum thirst (temporarily or permanent)
    - regenerate: Causes the players health to regenerate over time.
-   - heal: Heals some of the players health.
    - grow-tree: Grows trees in the tile the player is standing in.
  
  
