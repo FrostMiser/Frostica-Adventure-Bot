@@ -16,8 +16,9 @@ def run_command(message, message_content, session):
             player.health = player.max_health
             response = 'Your health has been set to your max health.'
         elif subcommand == 'feed':
-            player.health = player.hunger
-            response = 'Your health has been set to your max health.'
+            player.hunger = player.max_hunger
+            player.thirst = player.max_thirst
+            response = 'Your hunger and thirst have been filled.'
         else:
             response = 'Unknown command. Available admin commands are: maxmana, maxhealth, feed.'
     return response
