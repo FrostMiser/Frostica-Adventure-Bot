@@ -38,12 +38,16 @@ def run_command(message, message_content, session):
     # ToDo This version of teleport is temporary to help get around the map. Add a separate admin teleport and limit
     #      this version to a set number of tiles away from the player's location.
     elif spell_name == 'teleport':
+        cost = 15
         location_x = ' '.join(message_content.split(" ")[2:3]) if len(message_content.split(" ")) > 2 else None
         location_y = ' '.join(message_content.split(" ")[3:4]) if len(message_content.split(" ")) > 3 else None
         # ToDo Allow admins to teleport larger distances
-        if location_x > 10 or location_y > 10:
+        if player.mana - cost < 0:
+            response = 'You do not have enough mana to cast this spell.'
+        elif location_x > 10 or location_y > 10:
             response = 'You may only teleport up to 10 tiles from your current location.'
         else:
+            player.mana = player.mana - cost
             if location_x and location_y and location_x.isnumeric() and location_y.isnumeric() \
                     and 0 <= int(location_x) < 10000 and 0 <= int(location_y) < 10000:
                 player.x = location_x
