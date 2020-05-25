@@ -28,7 +28,7 @@ To survive, you will need to find food and water. Eat food or drink water stored
 You will also need to stay warm in cold areas. Certain types of food also satisfy thirst.
 
 ### Hunger and Thirst
-Hunger and thirst are affected by activities such as mining, chopping, and movement. Different types of terrain affect 
+Hunger and thirst are affected by activities such as mining, chopping, and movement. Different types of terrain affects 
 hunger and thirst differently.
 
 ## Admin Commands
@@ -48,8 +48,6 @@ hunger and thirst differently.
 * Quests
 * Spell Difficulty. Different spells are more or less difficult to cast.
 * Spells
-   - convert: Convert magic ore to mana.
-   - teleport: Teleport up to 10 tiles away.
    - summon-food: Summons some food.
    - summon-water: Summons some water.
    - health-boost: Increases the players maximum health (temporarily or permanent)
@@ -58,5 +56,4 @@ hunger and thirst differently.
    - thirst-boost: Increases the players maximum thirst (temporarily or permanent)
    - regenerate: Causes the players health to regenerate over time.
    - grow-tree: Grows trees in the tile the player is standing in.
- 
  
