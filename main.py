@@ -65,7 +65,7 @@ async def on_message(message):
     elif command == '!help':
         response = command_help.run_command()
     elif command == '!admin':
-        response = admin.run_command()
+        response = admin.run_command(message, message_content, session)
     else:
         response = "Unknown command."
 
