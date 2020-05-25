@@ -73,8 +73,9 @@ def complete_command(player, session):
 
 def _reset_player(player, session):
     player_id = player.id
-    # ToDo Add the ability for certain items to persist, also need to check player equipment
+    # ToDo Add the ability for certain items to persist
     player_inventory = session.query(PlayerInventory).filter(PlayerInventory.player_id == player_id).all()
     for player_inventory_item in player_inventory:
         session.delete(player_inventory_item)
+    # ToDo Reset player equipment
     session.delete(player)
