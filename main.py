@@ -1,13 +1,19 @@
 """This is the main module which runs this application"""
+import discord
+
 from commands import cast, char, chop, craft, enter, forage, hunt, inv, map as area_map, mine, move, recipes, spellbook, \
     use, setup, equip, help as command_help, admin
-import discord
 from common.base import Base
 from common.database import db_engine
 from common.helpers import get_session, complete_command
 from common.initialize import initialize_player, initialize_world
 from configuration import settings  # pylint: disable=no-name-in-module
 
+import logging
+
+logger = logging.getLogger('frostica-adventure-bot')
+logger.setLevel(logging.DEBUG)
+logger.addHandler(logging.StreamHandler())
 
 client = discord.Client()
 channel = discord.channel
@@ -26,6 +32,8 @@ async def on_message(message):
 
     if not command.startswith('!'):
         return
+
+    logger.info(f"{message.author} {message_content}")
 
     player = initialize_player(message.author.name, message.author.id, session)
     initialize_world()
