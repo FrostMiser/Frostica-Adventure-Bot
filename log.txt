@@ -1,0 +1,2 @@
+%(asctime): %(message)s
+2020-05-24 23:31:21,867: FrostMiser#4029 !use

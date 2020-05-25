@@ -14,6 +14,10 @@ import logging
 logger = logging.getLogger('frostica-adventure-bot')
 logger.setLevel(logging.DEBUG)
 logger.addHandler(logging.StreamHandler())
+file_handler = logging.FileHandler('log.txt')
+file_handler.setFormatter(logging.Formatter('%(asctime)s: %(message)s'))
+logger.addHandler(file_handler)
+
 
 client = discord.Client()
 channel = discord.channel
