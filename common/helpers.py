@@ -65,7 +65,8 @@ def complete_command(player, session):
             else:
                 message = '{} died of hunger️r'.format(player.name)
             message_dashes = re.sub('.', '-', message)
-            response = '\n☠️\n`{message_dashes}`\n`{message}`\n`{message_dashes}`\n☠️\n'.format(message_dashes=message_dashes, message=message)
+            response = '\n☠️\n`{message_dashes}`\n`{message}`\n`{message_dashes}`\n☠️\n'.format(
+                message_dashes=message_dashes, message=message)
             _reset_player(player, session)
     return response
 
