@@ -1,6 +1,6 @@
 """This is the main module which runs this application"""
 from commands import cast, char, chop, craft, enter, forage, hunt, inv, map as area_map, mine, move, recipes, spellbook, \
-    use, setup, equip, help as command_help
+    use, setup, equip, help as command_help, admin
 import discord
 from common.base import Base
 from common.database import db_engine
@@ -64,6 +64,8 @@ async def on_message(message):
         response = equip.run_command(message, message_content, session)
     elif command == '!help':
         response = command_help.run_command()
+    elif command == '!admin':
+        response = admin.run_command()
     else:
         response = "Unknown command."
 
