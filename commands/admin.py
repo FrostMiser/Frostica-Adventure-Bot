@@ -31,5 +31,5 @@ def run_command(message, message_content, session):
             player.thirst = player.max_thirst
             response = 'Your hunger and thirst have been filled.'
         else:
-            response = 'Unknown command. Available admin commands are: maxmana, maxhealth, feed.'
+            response = 'Unknown command. Available admin commands are: maxmana, maxhealth, feed, setlocation.'
     return response
