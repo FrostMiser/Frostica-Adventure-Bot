@@ -23,7 +23,7 @@ def generate_world():
         elif 400 <= pixel_total < 550:
             output = 4  # Mountains
         else:
-            output = 0
+            output = 0  # Snow covered mountains
         row.append(output)
         if len(row) % world_width == 0:
             world.append(row)
