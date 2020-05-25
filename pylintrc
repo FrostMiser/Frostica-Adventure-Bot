@@ -3,3 +3,5 @@ max-line-length=150
 
 [MESSAGES CONTROL]
 disable=C0103, R0912, C0111, W0511, R0903, R0916, R0915, R0801
+
+ignored-classes=Session
