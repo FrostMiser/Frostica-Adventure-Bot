@@ -3,7 +3,7 @@
 general = {
     'database_engine': 'sqlite:///path/to/database.db',
     'api_token': 'example',
-    'admins': ['id of the admin', 'another admin id']
+    'admins': []  # Add numeric ID of the admin in this list. Multiple admin IDs can be added.
 }
 
 player = {
