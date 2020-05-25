@@ -14,6 +14,7 @@ def run_command():
         '!move': 'Move to a different area, use !move <n|s|e|w>.',
         '!recipes': 'View recipes, or view recipe ingredients with !recipes <recipe>.',
         '!use': 'Use an item with !use <item>. Used to eat, drink and equip items.',
+        '!spellbook': 'View your book of spells.',
     }
 
     response = '__List of commands__'
