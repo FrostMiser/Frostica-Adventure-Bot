@@ -25,6 +25,16 @@ def run_command(message, message_content, session):
                 response = 'You convert {} magic ore into mana.'.format(amount)
         if not response:
             response = 'You do not have any magic ore to convert.'
+    elif spell_name == 'heal':
+        cost = 10
+        if player.health >= player.max_health:
+            response = 'You do not need to heal right now.'
+        elif player.mana - cost < 0:
+            response = 'You do not have enough mana to cast this spell.'
+        else:
+            player.mana = player.mana - cost
+            player.health = max(player.health+10, player.max_health)
+            response = 'You cast a spell and heal yourself.'
     # ToDo This version of teleport is temporary to help get around the map. Add a separate admin teleport and limit
     #      this version to a set number of tiles away from the player's location.
     elif spell_name == 'teleport':

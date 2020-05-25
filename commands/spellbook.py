@@ -5,6 +5,7 @@ def run_command():
     spells = {
         'convert': 'Convert magic ore into mana.',
         'teleport': 'Teleport up to 10 tiles away.',
+        'heal': 'Heal 10 health.',
     }
 
     response = '__Spell Book__'
