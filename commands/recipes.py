@@ -1,11 +1,8 @@
-from common.database import db_engine
-from common.helpers import get_session
 from models.recipe import Recipe
 from models.recipe_ingredient import RecipeIngredient
 
 
-def run_command(message_content):
-    session = get_session()
+def run_command(message_content, session):
     recipe_name = ' '.join(message_content.split(" ")[1:]) if len(message_content.split(" ")) > 1 else None
     if recipe_name:
         recipe = session.query(Recipe).filter(Recipe.name == recipe_name).first()
