@@ -56,4 +56,9 @@ hunger and thirst differently.
    - thirst-boost: Increases the players maximum thirst (temporarily or permanent)
    - regenerate: Causes the players health to regenerate over time.
    - grow-tree: Grows trees in the tile the player is standing in.
- 
+
+# Setup
+Requires Python 3.7+
+* Install Python
+* Install requirements
+* Run main.py with Python
